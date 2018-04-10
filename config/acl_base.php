@@ -79,6 +79,17 @@ return [
 
   "groups_per_page" => 15,
 
+  /*
+  |--------------------------------------------------------------------------
+  | Courses per page
+  |--------------------------------------------------------------------------
+  |
+  | Set the number of courses per page to show on admin courses list page
+  |
+  */
+
+    "courses_per_page" => 15,
+
     /*
    |--------------------------------------------------------------------------
    | Captcha validation on signup

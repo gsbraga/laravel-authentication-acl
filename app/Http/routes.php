@@ -193,6 +193,15 @@ Route::group(['middleware' => ['web']], function ()
         ]);
 
         /**
+         * courses
+         */
+        Route::get('/admin/courses/list', [
+            'as'   => 'courses.list',
+            'uses' => 'LaravelAcl\Course\Controllers\CourseController@getList'
+        ]);
+
+
+        /**
          * permissions
          */
         Route::get('/admin/permissions/list', [

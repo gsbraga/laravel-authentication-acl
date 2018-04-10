@@ -55,6 +55,13 @@ return [
                     "link"        => '/admin/groups/list',
                     "permissions" => ["_superadmin", "_group-editor"]
             ],
+
+            [
+                "name"        => "Courses",
+                "route"       => "courses",
+                "link"        => '/admin/courses/list',
+                "permissions" => ["_superadmin", "_course-editor"]
+            ],
             [
                     "name"        => "Permission",
                     "route"       => "permission",

@@ -26,9 +26,8 @@ class CourseController extends Controller
     public function getList()
     {
         $courses = $this->model->all();
-//        return response($courses, 200);
 
-        return View::make('laravel-authentication-acl::admin.course.list')->with(["courses" => $courses]);
+        return \view('laravel-authentication-acl::admin.course.list',  $courses);
     }
 
 }

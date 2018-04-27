@@ -12,7 +12,7 @@ namespace LaravelAcl\Course\Controllers;
 use Illuminate\View\View;
 use LaravelAcl\Authentication\Controllers\Controller;
 use LaravelAcl\Course\Models\Courses;
-use LaravelAcl\Http\Requests\Request;
+use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
@@ -23,11 +23,25 @@ class CourseController extends Controller
         $this->model = new Courses();
     }
 
-    public function getList()
+    public function getList(Request $request)
     {
         $courses = $this->model->all();
 
-        return \view('laravel-authentication-acl::admin.course.list',  $courses);
+        return \view('laravel-authentication-acl::admin.course.list', compact('courses', 'request' ));
     }
+
+    public function editCourse(Request $request)
+    {
+        $id = $request->get('id');
+        $course = $this->model->find($id);
+
+        if(!isset($course)){
+            $course = new Courses();
+        }
+
+        return \view('laravel-authentication-acl::admin.course.edit', compact('course'));
+
+    }
+
 
 }

@@ -1,7 +1,7 @@
 @extends('laravel-authentication-acl::admin.layouts.base-2cols')
 
 @section('title')
-Admin area: edit group
+Admin area: edit course
 @stop
 
 @section('content')
@@ -19,30 +19,35 @@ Admin area: edit group
         @endif
         <div class="panel panel-info">
             <div class="panel-heading">
-                    <h3 class="panel-title bariol-thin">{!! isset($group->id) ? '<i class="fa fa-pencil"></i> Edit' : '<i class="fa fa-users"></i> Create' !!} group</h3>
+                    <h3 class="panel-title bariol-thin">{!! isset($course->id) ? '<i class="fa fa-pencil"></i> Edit' : '<i class="fa fa-users"></i> Create' !!} course</h3>
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-6 col-xs-12">
-                        {{-- group base form --}}
+                        {{-- course base form --}}
                         <h4>General data</h4>
-                        {!! Form::model($group, [ 'url' => [URL::route('groups.edit'), $group->id], 'method' => 'post'] ) !!}
+                        {!! Form::model($course, [ 'url' => [URL::route('courses.edit'), $course->id], 'method' => 'post'] ) !!}
                         <!-- name text field -->
                         <div class="form-group">
                             {!! Form::label('name','Name: *') !!}
-                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'group name']) !!}
+                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'course name']) !!}
+                        </div>
+                        <!-- ful name text field -->
+                        <div class="form-group">
+                            {!! Form::label('name','Full Name: *') !!}
+                            {!! Form::text('fullname', null, ['class' => 'form-control', 'placeholder' => 'course full name']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('name') !!}</span>
                         {!! Form::hidden('id') !!}
-                        <a href="{!! URL::route('groups.delete',['id' => $group->id, '_token' => csrf_token()]) !!}" class="btn btn-danger pull-right margin-left-5 delete">Delete</a>
+                        <a href="{!! URL::route('courses.delete',['id' => $course->id, '_token' => csrf_token()]) !!}" class="btn btn-danger pull-right margin-left-5 delete">Delete</a>
                         {!! Form::submit('Save', array("class"=>"btn btn-info pull-right ")) !!}
                         {!! Form::close() !!}
                     </div>
                     <div class="col-md-6 col-xs-12">
-                    {{-- group permission form --}}
+                    {{-- course permission form --}}
                         <h4><i class="fa fa-lock"></i> Permissions</h4>
                         {{-- permissions --}}
-                        @include('laravel-authentication-acl::admin.group.perm')
+{{--                        @include('laravel-authentication-acl::admin.course.perm')--}}
                     </div>
                 </div>
            </div>

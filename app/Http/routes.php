@@ -199,6 +199,22 @@ Route::group(['middleware' => ['web']], function ()
             'as'   => 'courses.list',
             'uses' => 'LaravelAcl\Course\Controllers\CourseController@getList'
         ]);
+        Route::get('/admin/courses/edit', [
+            'as'   => 'courses.edit',
+                'uses' => 'LaravelAcl\Course\Controllers\CourseController@editCourse'
+        ]);
+        Route::post('/admin/courses/edit', [
+            'as'   => 'courses.edit',
+            'uses' => 'LaravelAcl\Course\Controllers\CourseController@postEditCourse'
+        ]);
+        Route::get('/admin/courses/delete', [
+            'as'   => 'courses.delete',
+            'uses' => 'LaravelAcl\Course\Controllers\CourseController@deleteCourse'
+        ]);
+        Route::post('/admin/courses/editpermission', [
+            'as'   => 'courses.edit.permission',
+            'uses' => 'LaravelAcl\Course\Controllers\CourseController@editPermission'
+        ]);
 
 
         /**

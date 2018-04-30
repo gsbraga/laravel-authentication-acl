@@ -37,6 +37,10 @@ Admin area: edit course
                             {!! Form::label('name','Full Name: *') !!}
                             {!! Form::text('fullname', null, ['class' => 'form-control', 'placeholder' => 'course full name']) !!}
                         </div>
+                        <div class="input-group">
+                            <span class="input-group-addon form-button button-add-perm"><span class="glyphicon glyphicon-plus-sign add-input"></span></span>
+                            {!! Form::select('moodles_id', $moodles_values, '', ["class"=>"form-control permission-select"]) !!}
+                        </div>
                         <span class="text-danger">{!! $errors->first('name') !!}</span>
                         {!! Form::hidden('id') !!}
                         <a href="{!! URL::route('courses.delete',['id' => $course->id, '_token' => csrf_token()]) !!}" class="btn btn-danger pull-right margin-left-5 delete">Delete</a>

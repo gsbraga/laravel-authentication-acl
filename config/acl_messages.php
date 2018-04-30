@@ -50,6 +50,10 @@ return [
                 "group_edit_success"                   => "Group edited succesfully.",
                 "group_delete_success"                 => "Group deleted succesfully.",
                 "group_permission_edit_success"        => "Permission edited succesfully.",
+                // course
+                "course_edit_success"                   => "Course edited succesfully.",
+                "course_delete_success"                 => "Course deleted succesfully.",
+                "course_permission_edit_success"        => "Permission edited succesfully.",
                 // permission
                 "permission_permission_edit_success"   => "Permission edited with success.",
                 "permission_permission_delete_success" => "Permission deleted with success.",
@@ -68,6 +72,8 @@ return [
                 "cannot_upload_file"         => "Cannot upload the file.",
                 // group
                 "group_permission_not_found" => "Permission not found.",
+                // course
+                "course_permission_not_found" => "Permission not found.",
                 // permission
                 // reminder
                 "reset_password_error" => 'There was a problem changing the password.',

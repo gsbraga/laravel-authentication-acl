@@ -9,13 +9,13 @@
 namespace LaravelAcl\Course\Controllers;
 
 
-use Illuminate\Support\Facades\Redirect;
 use LaravelAcl\Course\Models\Moodles;
 use Validator;
 use Illuminate\View\View;
 use LaravelAcl\Authentication\Controllers\Controller;
 use LaravelAcl\Course\Models\Courses;
 use Illuminate\Http\Request;
+use Redirect, App, Config;
 
 class CourseController extends Controller
 {
@@ -28,7 +28,8 @@ class CourseController extends Controller
 
     public function getList(Request $request)
     {
-        $courses = $this->model->all();
+        $name = $request->get('name');
+        $courses = $this->model->getAll($name);
 
         return \view('laravel-authentication-acl::admin.course.list', compact('courses', 'request' ));
     }
@@ -42,7 +43,12 @@ class CourseController extends Controller
             $course = new Courses();
         }
 
-        $moodles_values = Moodles::select('name')->get()->toArray();
+        $moodles = Moodles::select('id', 'name')->get();
+        $moodles_values = [];
+
+        foreach ($moodles as $key => $value){
+            $moodles_values[$value->id] = $value->name;
+        }
 
         return \view('laravel-authentication-acl::admin.course.edit', compact('course', 'moodles_values'));
 
@@ -59,27 +65,30 @@ class CourseController extends Controller
 
         $id = $request->get('id');
         $course = $this->model->find($id);
-        dd($course);
+
 
         try
         {
             if ($validator->fails()) {
-                return redirect('courses/edit')
+                return redirect('admi/courses/edit')
                     ->withErrors($validator)
                     ->withInput();
             }
-
             if($course == null)
             {
                 $course = $this->model->create([
                     'name' => $request->input('name'),
-                    'fullname' => $request->input('fullname')
+                    'fullname' => $request->input('fullname'),
+                    'moodle_id' => $request->input('moodle_id'),
+                    'activated' => 1,
+                    'protected' => 0,
                 ]);
 
             }else{
 
                 $course->name = $request->input('name');
                 $course->fullname = $request->input('fullname');
+                $course->moodle_id = $request->input('moodle_id');
                 $course->save();
            }
 
@@ -87,6 +96,7 @@ class CourseController extends Controller
         catch(\Exception $e)
         {
             $errors = $e;
+            dd($errors);
             // passing the id incase fails editing an already existing item
             return Redirect::route("courses.edit", $id ? ["id" => $id]: [])->withInput()->withErrors($errors);
         }

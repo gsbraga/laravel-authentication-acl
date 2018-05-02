@@ -61,6 +61,22 @@ View::composer(['laravel-authentication-acl::admin.group.*'], function ($view)
     ]);
 });
 /**
+ *  Course sidebar
+ */
+View::composer(['laravel-authentication-acl::admin.course.*'], function ($view)
+{
+    $view->with('sidebar_items', [
+        "Courses list" => [
+            'url'  => URL::route('courses.list'),
+            "icon" => '<i class="fa fa-users"></i>'
+        ],
+        "Add course"   => [
+            'url'  => URL::route('courses.edit'),
+            "icon" => '<i class="fa fa-plus-circle"></i>'
+        ]
+    ]);
+});
+/**
  *  Permission sidebar
  */
 View::composer(['laravel-authentication-acl::admin.permission.*'], function ($view)

@@ -34,12 +34,13 @@ Admin area: edit course
                         </div>
                         <!-- ful name text field -->
                         <div class="form-group">
-                            {!! Form::label('name','Full Name: *') !!}
+                            {!! Form::label('fullname','Full Name: *') !!}
                             {!! Form::text('fullname', null, ['class' => 'form-control', 'placeholder' => 'course full name']) !!}
                         </div>
                         <div class="input-group">
-                            <span class="input-group-addon form-button button-add-perm"><span class="glyphicon glyphicon-plus-sign add-input"></span></span>
-                            {!! Form::select('moodles_id', $moodles_values, '', ["class"=>"form-control permission-select"]) !!}
+                            {!! Form::label('moodle_id','Ambiente: *') !!}
+                            {{--<span class="input-group-addon form-button button-add-perm"><span class="glyphicon glyphicon-plus-sign add-input"></span></span>--}}
+                            {!! Form::select('moodle_id', $moodles_values, '', ["class"=>"form-control permission-select"]) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('name') !!}</span>
                         {!! Form::hidden('id') !!}
@@ -49,7 +50,7 @@ Admin area: edit course
                     </div>
                     <div class="col-md-6 col-xs-12">
                     {{-- course permission form --}}
-                        <h4><i class="fa fa-lock"></i> Permissions</h4>
+                        {{--<h4><i class="fa fa-lock"></i> Permissions</h4>--}}
                         {{-- permissions --}}
 {{--                        @include('laravel-authentication-acl::admin.course.perm')--}}
                     </div>

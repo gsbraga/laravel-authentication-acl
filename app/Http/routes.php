@@ -211,6 +211,10 @@ Route::group(['middleware' => ['web']], function ()
             'as'   => 'courses.delete',
             'uses' => 'LaravelAcl\Course\Controllers\CourseController@deleteCourse'
         ]);
+        Route::get('/admin/courses/users', [
+            'as'   => 'courses.users',
+            'uses' => 'LaravelAcl\Course\Controllers\CourseController@usersCourse'
+        ]);
         Route::post('/admin/courses/editpermission', [
             'as'   => 'courses.edit.permission',
             'uses' => 'LaravelAcl\Course\Controllers\CourseController@editPermission'

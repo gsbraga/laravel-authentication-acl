@@ -103,6 +103,12 @@ class CourseController extends Controller
         return Redirect::route('courses.edit',["id" => $course->id])->withMessage(Config::get('acl_messages.flash.success.course_edit_success'));
     }
 
+    public function getUsersCourseList(Request $request)
+    {
+        $name = $request->get('name');
+        $courses = $this->model->getAll($name);
 
+        return \view('laravel-authentication-acl::admin.course.list', compact('courses', 'request' ));
+    }
 
 }

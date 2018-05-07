@@ -28,4 +28,20 @@ class Courses extends Model
 
         return DB::table('courses')->get();
     }
+
+    public function getUsersCourses($id)
+    {
+
+        $dados = DB::select("
+            SELECT
+              users.id, users.activated, users.last_login, users.email, user_profile.first_name, 
+              user_profile.last_name,
+              (SELECT id FROM users_courses WHERE users.id = users_courses.user_id AND users_courses.course_id = $id ) as user_course_id
+            FROM
+              users
+            INNER JOIN user_profile ON users.id = user_profile.user_id
+            ");
+
+        return $dados;
+    }
 }

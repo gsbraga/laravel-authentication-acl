@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCoursesTable extends Migration
+class CreateUsersCoursesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,27 @@ class CreateCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('courses', function(Blueprint $table)
+        Schema::create('users_courses', function(Blueprint $table)
         {
             $table->increments('id');
             $table->integer('moodle_id')->unsigned();
-            $table->string('name');
-            $table->string('fullname');
-            $table->boolean('activated')->default(0);
-            $table->boolean('protected')->default(0);
+            $table->integer('user_id')->unsigned();
+            $table->integer('course_id')->unsigned();
             $table->timestamps();
 
             // foreign keys
             $table->foreign('moodle_id')
                 ->references('id')->on('moodles')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('course_id')
+                ->references('id')->on('courses')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('user_id')
+                ->references('id')->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
@@ -38,6 +46,6 @@ class CreateCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('courses');
+        Schema::dropIfExists('users_courses');
     }
 }

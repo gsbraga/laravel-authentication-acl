@@ -105,10 +105,11 @@ class CourseController extends Controller
 
     public function getUsersCourseList(Request $request)
     {
-        $name = $request->get('name');
-        $courses = $this->model->getAll($name);
+        $id = $request->get('id');
+        $course = $this->model->find($id);
+        $users = $this->model->getUsersCourses($course->id);
 
-        return \view('laravel-authentication-acl::admin.course.list', compact('courses', 'request' ));
+        return \view('laravel-authentication-acl::admin.course.course-view-user', compact('users', 'request', 'course' ));
     }
 
 }

@@ -25,34 +25,20 @@ Admin area: edit course
                 <div class="row">
                     <div class="col-md-6 col-xs-12">
                         {{-- course base form --}}
-                        <h4>General data</h4>
-                        {!! Form::model($course, [ 'url' => [URL::route('courses.edit'), $course->id], 'method' => 'post'] ) !!}
-                        <!-- name text field -->
-                        <div class="form-group">
-                            {!! Form::label('name','Name: *') !!}
-                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'course name']) !!}
-                        </div>
-                        <!-- ful name text field -->
-                        <div class="form-group">
-                            {!! Form::label('fullname','Full Name: *') !!}
-                            {!! Form::text('fullname', null, ['class' => 'form-control', 'placeholder' => 'course full name']) !!}
-                        </div>
-                        <div class="input-group">
-                            {!! Form::label('moodle_id','Ambiente: *') !!}
-                            {{--<span class="input-group-addon form-button button-add-perm"><span class="glyphicon glyphicon-plus-sign add-input"></span></span>--}}
-                            {!! Form::select('moodle_id', $moodles_values, '', ["class"=>"form-control permission-select"]) !!}
-                        </div>
-                        <span class="text-danger">{!! $errors->first('name') !!}</span>
-                        {!! Form::hidden('id') !!}
-                        <a href="{!! URL::route('courses.delete',['id' => $course->id, '_token' => csrf_token()]) !!}" class="btn btn-danger pull-right margin-left-5 delete">Delete</a>
-                        {!! Form::submit('Save', array("class"=>"btn btn-info pull-right ")) !!}
-                        {!! Form::close() !!}
+                        <h3>{{ $course->name }}</h3>
+
+                        <h4>
+                            {{ $course->fullname }}
+                        </h4>
                     </div>
+                </div>
+                <br/>
+                <div class="row">
                     <div class="col-md-6 col-xs-12">
-                    {{-- course permission form --}}
-                        {{--<h4><i class="fa fa-lock"></i> Permissions</h4>--}}
+
+                        <h5><i class="fa fa-lock"></i> Usuários com acesso ao Curso</h5>
                         {{-- permissions --}}
-{{--                        @include('laravel-authentication-acl::admin.course.perm')--}}
+                        @include('laravel-authentication-acl::admin.course.user-course-table')
                     </div>
                 </div>
            </div>

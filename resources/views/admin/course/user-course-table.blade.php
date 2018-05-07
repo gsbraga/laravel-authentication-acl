@@ -3,27 +3,10 @@
         <h3 class="panel-title bariol-thin"><i class="fa fa-user"></i> {!! $request->all() ? 'Search results:' : 'Users' !!}</h3>
     </div>
     <div class="panel-body">
-        <div class="row">
-            <div class="col-lg-10 col-md-9 col-sm-9">
-                {!! Form::open(['method' => 'get', 'class' => 'form-inline']) !!}
-                    <div class="form-group">
-                        {!! Form::select('order_by', ["" => "select column", "first_name" => "First name", "last_name" => "Last name", "email" => "Email", "last_login" => "Last login", "active" => "Active"], $request->get('order_by',''), ['class' => 'form-control']) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::select('ordering', ["asc" => "Ascending", "desc" => "descending"], $request->get('ordering','asc'), ['class' =>'form-control']) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::submit('Order', ['class' => 'btn btn-default']) !!}
-                    </div>
-                {!! Form::close() !!}
-            </div>
-            <div class="col-lg-2 col-md-3 col-sm-3">
-                    <a href="{!! URL::route('users.edit') !!}" class="btn btn-info"><i class="fa fa-plus"></i> Add New</a>
-            </div>
-        </div>
+
       <div class="row">
           <div class="col-md-12">
-              @if(! $users->isEmpty() )
+              @if( count($users) > 0 )
               <table class="table table-hover">
                       <thead>
                           <tr>
@@ -42,9 +25,9 @@
                               <td class="hidden-xs">{!! $user->first_name !!}</td>
                               <td class="hidden-xs">{!! $user->last_name !!}</td>
                               <td>{!! $user->activated ? '<i class="fa fa-circle green"></i>' : '<i class="fa fa-circle-o red"></i>' !!}</td>
-                              <td class="hidden-xs">{!! $user->last_login ? $user->last_login : 'not logged yet.' !!}</td>
+                              <td class="hidden-xs"></td>
                               <td>
-                                  @if(! $user->protected)
+                                  @if(! $user->first_name)
                                       <a href="{!! URL::route('users.edit', ['id' => $user->id]) !!}"><i class="fa fa-pencil-square-o fa-2x"></i></a>
                                       <a href="{!! URL::route('users.delete',['id' => $user->id, '_token' => csrf_token()]) !!}" class="margin-left-5 delete"><i class="fa fa-trash-o fa-2x"></i></a>
                                   @else
@@ -57,7 +40,7 @@
                       @endforeach
               </table>
               <div class="paginator">
-                  {!! $users->appends($request->except(['page']) )->render() !!}
+                  {{--{!! $users->appends($request->except(['page']) )->render() !!}--}}
               </div>
               @else
                   <span class="text-warning"><h5>No results found.</h5></span>

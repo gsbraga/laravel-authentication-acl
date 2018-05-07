@@ -14,9 +14,10 @@
     <tbody>
         @foreach($courses as $course)
         <tr>
-            <td style="width:90%">{!! $course->name !!}</td>
-            <td style="width:10%">
+            <td style="width:80%">{!! $course->name !!}</td>
+            <td style="width:20%">
             @if(! $course->protected)
+                <a href="{!! URL::route('courses.course-view-user', ['id' => $course->id]) !!}"><i class="fa fa-user fa-2x"></i></a>
                 <a href="{!! URL::route('courses.edit', ['id' => $course->id]) !!}"><i class="fa fa-edit fa-2x"></i></a>
                 <a href="{!! URL::route('courses.delete',['id' => $course->id, '_token' => csrf_token()]) !!}" class="margin-left-5 delete"><i class="fa fa-trash-o fa-2x"></i></a>
                 <span class="clearfix"></span>

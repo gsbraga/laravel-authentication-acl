@@ -219,6 +219,10 @@ Route::group(['middleware' => ['web']], function ()
             'as'   => 'courses.edit.permission',
             'uses' => 'LaravelAcl\Course\Controllers\CourseController@editPermission'
         ]);
+        Route::get('/admin/courses/userscourses', [
+            'as'   => 'courses.course-view-user',
+            'uses' => 'LaravelAcl\Course\Controllers\CourseController@getUsersCourseList'
+        ]);
 
 
         /**

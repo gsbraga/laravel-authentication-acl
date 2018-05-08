@@ -54,6 +54,8 @@ return [
                 "course_edit_success"                   => "Course edited succesfully.",
                 "course_delete_success"                 => "Course deleted succesfully.",
                 "course_permission_edit_success"        => "Permission edited succesfully.",
+                "user_course_add_success"               => "Permissão adicionada ao curso.",
+                "user_course_remove_success"            => "Permissão removida ao curso.",
                 // permission
                 "permission_permission_edit_success"   => "Permission edited with success.",
                 "permission_permission_delete_success" => "Permission deleted with success.",
@@ -74,6 +76,8 @@ return [
                 "group_permission_not_found" => "Permission not found.",
                 // course
                 "course_permission_not_found" => "Permission not found.",
+                "user_course_add_error"               => "Permissão negada para adicionar o usuário ao curso.",
+                "user_course_remove_error"            => "Permissão negada para remover o usuário do curso.",
                 // permission
                 // reminder
                 "reset_password_error" => 'There was a problem changing the password.',

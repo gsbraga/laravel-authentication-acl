@@ -1,6 +1,6 @@
 <div class="panel panel-info">
     <div class="panel-heading">
-        <h3 class="panel-title bariol-thin"><i class="fa fa-user"></i> {!! $request->all() ? 'Search results:' : 'Users' !!}</h3>
+        {{--<h3 class="panel-title bariol-thin"><i class="fa fa-user"></i> {!! $request->all() ? 'Search results:' : 'Users' !!}</h3>--}}
     </div>
     <div class="panel-body">
 
@@ -14,7 +14,6 @@
                               <th class="hidden-xs">First name</th>
                               <th class="hidden-xs">Last name</th>
                               <th>Active</th>
-                              <th class="hidden-xs">Last login</th>
                               <th>Operations</th>
                           </tr>
                       </thead>
@@ -24,15 +23,13 @@
                               <td>{!! $user->email !!}</td>
                               <td class="hidden-xs">{!! $user->first_name !!}</td>
                               <td class="hidden-xs">{!! $user->last_name !!}</td>
-                              <td>{!! $user->activated ? '<i class="fa fa-circle green"></i>' : '<i class="fa fa-circle-o red"></i>' !!}</td>
-                              <td class="hidden-xs"></td>
+                              <td>{!! $user->user_course_id ? '<i class="fa fa-circle green"></i>' : '<i class="fa fa-circle-o red"></i>' !!}</td>
                               <td>
-                                  @if(! $user->first_name)
-                                      <a href="{!! URL::route('users.edit', ['id' => $user->id]) !!}"><i class="fa fa-pencil-square-o fa-2x"></i></a>
-                                      <a href="{!! URL::route('users.delete',['id' => $user->id, '_token' => csrf_token()]) !!}" class="margin-left-5 delete"><i class="fa fa-trash-o fa-2x"></i></a>
+                                  @if($user->user_course_id)
+                                      <a title="Remover usuário" href="{!! URL::route('courses.deleteusercourse',['id' => $user->user_course_id, 'course_id' => $course->id, '_token' => csrf_token()]) !!}" class="margin-left-5 delete red"><i class="fa fa-trash-o fa-2x"></i></a>
                                   @else
-                                      <i class="fa fa-times fa-2x light-blue"></i>
-                                      <i class="fa fa-times fa-2x margin-left-12 light-blue"></i>
+                                      <a title="Adicionar usuário" href="{!! URL::route('courses.addusercourse',['user_id' => $user->id, 'course_id' => $course->id, '_token' => csrf_token()]) !!}" class="margin-left-5 green"><i class="fa fa-plus fa-2x"></i></a>
+
                                   @endif
                               </td>
                           </tr>

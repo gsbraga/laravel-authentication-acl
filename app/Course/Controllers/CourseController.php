@@ -10,6 +10,7 @@ namespace LaravelAcl\Course\Controllers;
 
 
 use LaravelAcl\Course\Models\Moodles;
+use LaravelAcl\Course\Models\UsersCourses;
 use Validator;
 use Illuminate\View\View;
 use LaravelAcl\Authentication\Controllers\Controller;
@@ -96,7 +97,6 @@ class CourseController extends Controller
         catch(\Exception $e)
         {
             $errors = $e;
-            dd($errors);
             // passing the id incase fails editing an already existing item
             return Redirect::route("courses.edit", $id ? ["id" => $id]: [])->withInput()->withErrors($errors);
         }
@@ -110,6 +110,48 @@ class CourseController extends Controller
         $users = $this->model->getUsersCourses($course->id);
 
         return \view('laravel-authentication-acl::admin.course.course-view-user', compact('users', 'request', 'course' ));
+    }
+
+    public function deleteUserCourse(Request $request){
+
+        try{
+
+        $id = $request->get('id');
+        $course_id = $request->get('course_id');
+
+        $user_course = UsersCourses::find($id);
+        $user_course->delete();
+
+        return Redirect::route('courses.course-view-user',["id" => $course_id])->withMessage(Config::get('acl_messages.flash.success.user_course_remove_success'));
+
+        }catch (\Exception $ex){
+            return Redirect::route('courses.course-view-user',["id" => $course_id])->withMessage(Config::get('acl_messages.flash.error.user_course_remove_error'));
+        }
+
+    }
+
+    public function addUserCourse(Request $request){
+
+        try{
+
+            $user_id = $request->get('user_id');
+            $course_id = $request->get('course_id');
+
+            $course = $this->model->find($course_id);
+
+            $user_course = new UsersCourses();
+            $user_course->create(array(
+                'course_id' => $course->id,
+                'user_id' => $user_id,
+                'moodle_id' => $course->moodle_id
+            ));
+
+            return Redirect::route('courses.course-view-user',["id" => $course_id])->withMessage(Config::get('acl_messages.flash.success.user_course_add_success'));
+
+        }catch (\Exception $ex){
+            return Redirect::route('courses.course-view-user',["id" => $course_id])->withMessage(Config::get('acl_messages.flash.error.user_course_add_error'));
+        }
+
     }
 
 }

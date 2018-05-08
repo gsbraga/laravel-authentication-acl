@@ -1,7 +1,7 @@
 @extends('laravel-authentication-acl::admin.layouts.base-2cols')
 
 @section('title')
-Admin area: edit course
+    Admin area: Vincular usuários
 @stop
 
 @section('content')
@@ -19,7 +19,7 @@ Admin area: edit course
         @endif
         <div class="panel panel-info">
             <div class="panel-heading">
-                    <h3 class="panel-title bariol-thin">{!! isset($course->id) ? '<i class="fa fa-pencil"></i> Edit' : '<i class="fa fa-users"></i> Create' !!} course</h3>
+                    <h3 class="panel-title bariol-thin">{!! isset($course->id) ? '<i class="fa fa-pencil"></i> Usuários' : '<i class="fa fa-users"></i> Users' !!} do Curso</h3>
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -34,7 +34,7 @@ Admin area: edit course
                 </div>
                 <br/>
                 <div class="row">
-                    <div class="col-md-6 col-xs-12">
+                    <div class="col-md-12 col-xs-12">
 
                         <h5><i class="fa fa-lock"></i> Usuários com acesso ao Curso</h5>
                         {{-- permissions --}}

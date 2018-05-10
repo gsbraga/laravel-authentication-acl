@@ -8,11 +8,24 @@ use Illuminate\Session\TokenMismatchException;
   |
 */
 
+
 /**
  * User login and logout
  */
 Route::group(['middleware' => ['web']], function ()
 {
+
+    //Dashboard dos AVAs
+    Route::get('/', [
+        "as"   => "dashboard.moodle",
+        "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getList'
+    ]);
+
+    //Dashboard dos Cursos
+    Route::get('/courses', [
+        "as"   => "courses.list",
+        "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getCoursesList'
+    ]);
 
     Route::get('/admin/login', [
             "as"   => "user.admin.login",

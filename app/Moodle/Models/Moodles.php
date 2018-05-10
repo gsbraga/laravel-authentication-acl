@@ -6,7 +6,7 @@
  * Time: 17:01
  */
 
-namespace LaravelAcl\Course\Models;
+namespace LaravelAcl\Moodle\Models;
 
 
 use Illuminate\Database\Eloquent\Model;

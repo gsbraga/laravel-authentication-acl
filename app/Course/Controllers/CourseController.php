@@ -9,7 +9,7 @@
 namespace LaravelAcl\Course\Controllers;
 
 
-use LaravelAcl\Course\Models\Moodles;
+use LaravelAcl\Moodles\Models\Moodles;
 use LaravelAcl\Course\Models\UsersCourses;
 use Validator;
 use Illuminate\View\View;

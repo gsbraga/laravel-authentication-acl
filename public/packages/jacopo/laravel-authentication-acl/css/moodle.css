@@ -1,0 +1,120 @@
+.card-body {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 100%;
+    border-radius: 5px;
+    height: 250px;
+    max-height: 300px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+img {
+    border-radius: 5px 5px 0 0;
+}
+
+.card-container {
+    padding: 2px 16px;
+    height: 100px;
+
+}
+
+.card-title {
+    height: 100px;
+    text-align: center;
+    cursor: pointer;
+    color: #FFF;
+    height: 90px;
+}
+
+.card-title > a >  h2{
+    line-height: 300%;
+    text-align: center;
+}
+
+.card-footer{
+    border-top: solid 1px #e2d2d2;
+    padding: 2px 16px;
+    height: 60px;
+    text-align: center;
+}
+
+
+.title1 {
+    background-color: rgb(85, 160, 113);
+}
+.title1:hover {
+    background: none;
+    background-color: #8FBD9D;
+}
+
+.title2 {
+    background-color: rgb(90, 35, 40);
+}
+.title2:hover {
+    background: none;
+    background-color: #8A3740;
+}
+
+.title3 {
+    background-color: rgb(31, 107, 117);
+}
+.title3:hover {
+    background: none;
+    background-color: #4C94A3;
+}
+
+.title4 {
+    background-color: rgb(172, 108, 45);;
+}
+.title4:hover {
+    background: none;
+    background-color: #E29455;
+}
+
+.card-container > p{
+    display: inline-block;
+}
+
+.icon-oline{
+    color: #36a72b;
+}
+
+
+/*course*/
+.card-body-course {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 100%;
+    border-radius: 5px;
+    height: 150px;
+    max-height: 200px;
+}
+
+.card-title-course {
+    height: 100px;
+    text-align: center;
+    cursor: pointer;
+    color: #afafaf;
+    height: 50px;
+}
+
+.card-title > a >  h2{
+    line-height: 300%;
+    text-align: center;
+}
+
+.card-container-course {
+    padding: 2px 16px;
+    height: 50px;
+
+}
+
+.card-footer-course{
+    border-top: solid 1px #e2d2d2;
+    padding: 2px 16px;
+    height: 50px;
+    text-align: center;
+}

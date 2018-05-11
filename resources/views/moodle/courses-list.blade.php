@@ -12,14 +12,14 @@
     <div class="row">
         @foreach($courses as $course)
 
-            <div class="col-md-4 col-sm-4 col-xs-6 col-lg-4">
+            <div class="col-md-4 col-sm-4 col-xs-6 col-lg-4 box-course">
                 <div class="card-body-course">
                     <div class="card-title-course"><h2>{{ $course->name }}</h2></div>
                     <div class="card-container-course">
                         <p>{{ $course->fullname}}</p>
                     </div>
                     <div class="card-footer-course">
-                        <a href="/course/{{$course->id}}"><h4>Acessar</h4></a>
+                        <a href="/admin/courses/userscourses?id={{$course->id}}"><h4>Acessar</h4></a>
                     </div>
                 </div>
             </div>

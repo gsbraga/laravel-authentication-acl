@@ -1,3 +1,8 @@
+body{
+    background-color: #f7fafb;
+}
+
+
 .card-body {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -18,7 +23,7 @@ img {
 .card-container {
     padding: 2px 16px;
     height: 100px;
-
+    border: 1px solid #eaf1f3;
 }
 
 .card-title {
@@ -89,8 +94,10 @@ img {
     transition: 0.3s;
     width: 100%;
     border-radius: 5px;
-    height: 150px;
+    height: 170px;
     max-height: 200px;
+    border-top: 1px solid #eaf1f3;
+    background-color: #fff;
 }
 
 .card-title-course {
@@ -109,7 +116,7 @@ img {
 .card-container-course {
     padding: 2px 16px;
     height: 50px;
-
+    text-align: center;
 }
 
 .card-footer-course{

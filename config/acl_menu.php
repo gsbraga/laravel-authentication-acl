@@ -13,7 +13,8 @@ return [
             [
                     "name"        => "Dashboard",
                     "route"       => "dashboard",
-                    "link"        => '/admin/users/dashboard',
+                    "link"        => '/',
+//                    "link"        => '/admin/users/dashboard',
                     "permissions" => []
             ],
             [

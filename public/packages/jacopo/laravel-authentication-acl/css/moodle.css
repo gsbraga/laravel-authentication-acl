@@ -93,7 +93,7 @@ img {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 100%;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     height: 170px;
     max-height: 200px;
     border-top: 1px solid #eaf1f3;
@@ -105,7 +105,7 @@ img {
     text-align: center;
     cursor: pointer;
     color: #afafaf;
-    height: 50px;
+    height: 70px;
 }
 
 .card-title > a >  h2{
@@ -124,4 +124,35 @@ img {
     padding: 2px 16px;
     height: 50px;
     text-align: center;
+}
+
+.course-list{
+    width: 100%;
+    height: 100px;
+    padding: .75em;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.img-course{
+    height: 100%;
+    width: 45px;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    -webkit-box-flex: 0;
+    flex-grow: 0;
+}
+
+.course-name{
+    letter-spacing: -.2px;
+    margin-left: 15px;
+    text-align: left;
+    max-width: 80%;
+}
+
+.box-course{
+    padding-bottom: 10px;
 }

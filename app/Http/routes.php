@@ -22,10 +22,23 @@ Route::group(['middleware' => ['web']], function ()
     ]);
 
     //Dashboard dos Cursos
+    Route::get('/categories', [
+        "as"   => "categories.list",
+        "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getCategoriesList'
+    ]);
+
+    Route::get('/categories/access', [
+        "as"   => "moodle.access",
+        "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleAccess'
+    ]);
+
+    //Listagem das Disciplinas
     Route::get('/courses', [
-        "as"   => "courses.list",
+        "as"   => "courses.moodle",
         "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getCoursesList'
     ]);
+
+
 
     Route::get('/admin/login', [
             "as"   => "user.admin.login",

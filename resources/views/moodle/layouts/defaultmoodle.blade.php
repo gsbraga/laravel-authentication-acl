@@ -36,3 +36,4 @@
         {!! HTML::script('packages/jacopo/laravel-authentication-acl/js/vendor/bootstrap.min.js') !!}
     </body>
 </html>
+

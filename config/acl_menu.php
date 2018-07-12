@@ -63,6 +63,7 @@ return [
                 "link"        => '/admin/courses/list',
                 "permissions" => ["_superadmin", "_course-editor"]
             ],
+
             [
                     "name"        => "Permission",
                     "route"       => "permission",

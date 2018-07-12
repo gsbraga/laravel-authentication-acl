@@ -16,6 +16,7 @@ class AddCategoryToCoursesTable extends Migration
         Schema::table('courses', function (Blueprint $table) {
             $table->integer('category_id')->unsigned();
             $table->string('image');
+            $table->integer('ch_total');
 
         });
     }

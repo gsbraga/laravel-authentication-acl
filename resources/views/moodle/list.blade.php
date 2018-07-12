@@ -14,7 +14,7 @@
 
             <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
                 <div class="card-body">
-                    <div class="card-title title{{ $moodle->id }}"><a style="color: #FFF;" href="/courses/?id={{ $moodle->id }}"><h2>{{ $moodle->name }}</h2></a></div>
+                    <div class="card-title title{{ $moodle->id }}"><a style="color: #FFF;" href="/categories/?id={{ $moodle->id }}"><h2>{{ $moodle->name }}</h2></a></div>
                     <div class="card-container">
                         <p>{{ $moodle->description }}</p>
                     </div>

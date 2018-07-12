@@ -143,8 +143,7 @@ return [
             LaravelAcl\Providers\AppServiceProvider::class,
             LaravelAcl\Providers\EventServiceProvider::class,
             LaravelAcl\Providers\RouteServiceProvider::class,
-            LaravelAcl\Authentication\AuthenticationServiceProvider::class,
-
+            LaravelAcl\Authentication\AuthenticationServiceProvider::class
     ],
 
     /*
@@ -188,7 +187,7 @@ return [
             'Storage'   => Illuminate\Support\Facades\Storage::class,
             'URL'       => Illuminate\Support\Facades\URL::class,
             'Validator' => Illuminate\Support\Facades\Validator::class,
-            'View'      => Illuminate\Support\Facades\View::class,
+            'View'      => Illuminate\Support\Facades\View::class
     ],
 
 ];

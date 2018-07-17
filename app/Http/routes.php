@@ -27,10 +27,6 @@ Route::group(['middleware' => ['web']], function ()
         "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getCategoriesList'
     ]);
 
-    Route::get('/categories/access', [
-        "as"   => "moodle.access",
-        "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleAccess'
-    ]);
 
     //Listagem das Disciplinas
     Route::get('/courses', [
@@ -259,6 +255,25 @@ Route::group(['middleware' => ['web']], function ()
             'as'   => 'courses.addusercourse',
             'uses' => 'LaravelAcl\Course\Controllers\CourseController@addUserCourse'
         ]);
+
+        /**
+         * reports
+         */
+        Route::get('admin/reports/access', [
+            "as"   => "moodle.access",
+            "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleAccess'
+        ]);
+
+        Route::get('admin/reports/useraccess', [
+            "as"   => "moodle.access",
+            "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleUserAccess'
+        ]);
+
+        Route::get('admin/reports/accesscourses', [
+            "as"   => "moodle.access",
+            "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleAccessCourses'
+        ]);
+
 
 
         /**

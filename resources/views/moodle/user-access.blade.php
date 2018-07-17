@@ -37,137 +37,147 @@
 
     <div class="panel panel-info">
         <div class="panel-heading">
-            <h3 class="panel-title bariol-thin"><i class="fa fa-bar-chart-o"></i> Acessos</h3>
+            <h2 class="panel-title bariol-thin"><i class="fa fa-bar-chart-o"></i> Acesso dos usuários </h2>
         </div>
         <div class="panel-body">
+
             <div class="row">
-                <div class="col-md-3 col-sm-4 col-xs-6 col-lg-3 form-group">
-                    <a href="/categories/?id={{ $moodle->id }}" class="red"><h4>Acessar Cursos <i class="fa fa-share"></i></h4></a>
-                </div>
-            </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Informe os dados da pesquisa:</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <br />
+                            <form id="search_form" class="form-horizontal form-label-left">
 
-                <div class="row">
-                    <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4">
-                        <div class="x_panel">
-                            <div class="x_title">
-                                <h2>Informe os dados da pesquisa:</h2>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="x_content">
-                                <br />
-                                <form id="search_form" class="form-horizontal form-label-left">
-
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-4" for="first-name">Curso:
-                                        </label>
-                                        <div class=" col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
-                                            <select onchange="troca_category()" id="categoryid" name="categoryid" required="required" class="form-control col-md-7 col-xs-12">
-                                                <option value="0">Selecione um Curso</option>
-                                            </select>
-                                            <span id="link_courseid"></span>
-                                        </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-4" for="first-name">Curso <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-4 col-sm-6 col-xs-8 form-group has-feedback">
+                                        <select onclick="troca_curso()" id="cursoid" name="cursoid" required="required" class="form-control col-md-7 col-xs-12">
+                                            <option value="0">Selecione um Curso</option>
+                                        </select>
                                     </div>
+                                </div>
 
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-4" for="first-name">Disciplina:
-                                        </label>
-                                        <div class=" col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
-                                            <select onchange="troca_course()" id="courseid" name="courseid" required="required" class="form-control col-md-7 col-xs-12">
-                                                <option value="0">Selecione uma Disciplina</option>
-                                            </select>
-                                            <span id="link_courseid"></span>
-                                        </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-4" for="first-name">Disciplina <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-4 col-sm-6 col-xs-8 form-group has-feedback">
+                                        <select onclick="troca_course()" id="courseid" name="courseid" required="required" class="form-control col-md-7 col-xs-12">
+                                            <option value="0">Selecione uma Displina</option>
+                                        </select>
                                     </div>
+                                </div>
 
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-4" for="first-name">Perfil:
-                                        </label>
-                                        <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
-                                            <select id="roleid" onchange="troca_perfil()" name="roleid" required="required" class="form-control col-md-7 col-xs-12">
-                                                <option value="0">Selecione um Perfil</option>
-                                            </select>
-                                            <span id="link_courseid"></span>
-                                        </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-4" for="first-name">Polo <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-4 col-sm-6 col-xs-8 form-group has-feedback">
+                                        <select id="groupid" name="groupid" required="required" class="form-control col-md-7 col-xs-12">
+                                            <option value="0">Selecione um Polo</option>
+                                        </select>
                                     </div>
+                                </div>
 
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-4" for="last-name">Polo:
-                                        </label>
-                                        <div class=" col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
-                                            <select onchange="troca_group()" id="group_name" name="group_name" required="required" class="form-control col-md-7 col-xs-12">
-                                                <option value="0">TODOS</option>
-                                            </select>
-                                            <span id="link_group_name"></span>
-                                        </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-4" for="last-name">Perfil <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-4 col-sm-6 col-xs-8 form-group has-feedback">
+                                        <select id="roleid" name="roleid" required="required" class="form-control col-md-7 col-xs-12">
+                                            <option value="0">Selecione um perfil</option>
+                                        </select>
                                     </div>
+                                </div>
 
-                                    <!-- <div class="ln_solid"></div>
-                                    <div class="form-group">
-                                      <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-3">
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-3">
                                         <button class="btn btn-primary" type="reset">Limpar campos</button>
-                                        <button type="button" onclick="qtd_dias_online()" class="btn btn-success">Mostrar</button>
-                                      </div>
-                                    </div> -->
-
-                                    <div class="form-group loading_icon" style="display: none;">
-                                        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4"></div>
-
-                                        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
-                                            <img src="/images/load.gif" width="90" alt="">
-                                        </div>
-
-                                        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4"></div>
+                                        <button type="button" onclick="ShowChartsUsers()" class="btn btn-success">Pesquisar</button>
                                     </div>
+                                </div>
 
-                                </form>
-                            </div>
+                            </form>
                         </div>
-                    </div>
-
-
-                    <!-- bar chart -->
-                    <div class="col-md-8 col-sm-12 col-xs-12 col-lg-8">
-                        <div class="x_panel">
-                            <div class="x_title">
-                                {{--<h2>Acesso por dia</h2>--}}
-                                <ul class="nav navbar-right panel_toolbox">
-                                    <!-- <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a> -->
-                                    </li>
-                                    <li class="dropdown">
-                                        <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a> -->
-                                        <!--  <ul class="dropdown-menu" role="menu">
-                                           <li><a href="#">Settings 1</a>
-                                           </li>
-                                           <li><a href="#">Settings 2</a>
-                                           </li>
-                                         </ul> -->
-                                    </li>
-                                    <!-- <li><a class="close-link"><i class="fa fa-close"></i></a> -->
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
-                            <!-- <div class="x_content">
-                              <div id="graph_bar" style="width:100%; height:280px;"></div>
-                            </div> -->
-                            <div class="x_content">
-
-                                <div id="echart_line" style="height:350px;"></div>
-
-                            </div>
-                        </div>
-                        <a id="chart-view" href="#"></a>
                     </div>
                 </div>
-                <!-- /bar charts -->
+            </div>
+
+            <div class="row" id="access_course_div" style="display: none;">
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_content">
+                            <p class="text-muted font-13 m-b-30">
+                                Selecione os usuários que deseja visualizar o gráfico.
+                            </p>
+                            <table id="access_course" class="table table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <!-- <th>CPF</th> -->
+                                    <th>Nome</th>
+                                    <th>Polo</th>
+                                    <th>Último Acesso</th>
+                                    <th>Selecione</th>
+                                </tr>
+                                </thead>
+                                <tbody id="tabela_id">
+                                <tr>
+                                    <td colspan="3">Nenhum registro encontrado!</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- <button style="display: none;" id="chart-view" type="button" onclick="countChartsUsers()" class="btn btn-success">Gráfico</button> -->
+
+                    </div>
+                </div>
 
             </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row" style="display: none;" id="grafico_acesso_user">
+
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Acessos</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <!--<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>-->
+                                <!--<li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Settings 1</a>
+                                    </li>
+                                    <li><a href="#">Settings 2</a>
+                                    </li>
+                                    </ul>
+                                </li>-->
+                                <!--<li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>-->
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+
+                            <div id="echart_line" style="height:350px;"></div>
+
+                        </div>
+                    </div>
+                    <a id="chart-view" href="#"></a>
+                </div>
+            </div>
+
         </div>
     </div>
 
-
-
 @stop
+
 @section('footer_scripts')
 
 <!-- jQuery -->
@@ -225,132 +235,51 @@
 
 <script type="text/javascript">
 
-    /* CHART - MORRIS  */
-
-    var qtd_dias_online = function(){
-
-        var categoryid = $('#categoryid').val();
-        var courseid = $('#courseid').val();
-        var roleid = $('#roleid').val();
-        var group_name=  $('#group_name').val();
-
-
-        $.ajax({
-            type: "POST",
-            url: URL_API + "?type=qtd_dias_online&category="+categoryid+"&courseid="+courseid+"&roleid="+roleid+"&group_name="+group_name,
-            // url: 'http://localhost/nead/api-monit/api.json',
-            dataType: "json",
-            success: function (data) {
-                if(data == 0){
-                    $('#graph_bar').html('<h2 class="red">Nenhum dado encontrado!</h2>');
-                    return false;
-                }
-                var aux = [];
-                $.each(data, function(index, item){
-                    aux.push({device: item.date, geekbench: item.users});
-
-
-                });
-                // $('#grafico_acesso_user').show();
-                window.location.href = '#chart-view';
-                console.log(aux);
-                $('#graph_bar').html('');
-                init_morris_charts2(aux);
-            }
-        });
-    }
-
-    function init_morris_charts2(dados) {
-
-        if( typeof (Morris) === 'undefined'){ return; }
-        console.log('init_morris_charts');
-
-
-        if ($('#graph_bar').length){
-
-            Morris.Bar({
-                element: 'graph_bar',
-                data: dados,
-                xkey: 'device',
-                ykeys: ['geekbench'],
-                labels: ['Ultimo acesso'],
-                barRatio: 0.4,
-                barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
-                xLabelAngle: 35,
-                hideHover: 'auto',
-                resize: true
-            });
-
-        }
-
-    }
-
-    var troca_category = function(){
-        if($('#categoryid').val() > 0){
-            grupos();
-        }
-        courses();
-        qtd_dias_online();
-    }
-
-    var troca_course = function(){
-        // if($('#courseid').val() > 0){
-        // grupos();
-        qtd_dias_online();
-        // }
-    }
-
-    var troca_group = function(){
-        // if($('#courseid').val() > 0){
-
-        qtd_dias_online();
-        // }
-    }
-
-    var troca_perfil = function(){
-        qtd_dias_online();
-    }
-
     var categories = function(){
 
         $.get( URL_API + "?type=cursos_moodle", function( data ) {
 
-            var html = '<option value="0">TODOS</option>';
+            var html = '';
             $.each(data, function(index, item){
                 html += '<option value="'+ item.id +'">'+ item.nome +'</option>';
             });
-            $("#categoryid").html(html);
+            $("#cursoid").append(html);
+
         }, "json");
+
     }
 
     categories();
 
     var courses = function(){
 
-        var categoryid = $("#categoryid").val();
+        var curso = $("#cursoid").val();
 
-        $.get( URL_API + "?type=modulos_curso&curso="+categoryid, function( data ) {
+        $.get( URL_API + "?type=modulos_curso&curso="+curso, function( data ) {
 
-            var html = '<option value="0">TODOS</option>';
+            var html = '<option value="0">Selecione uma Displina</option>';
             $.each(data, function(index, item){
                 html += '<option value="'+ item.id +'">'+ item.nome +'</option>';
             });
             $("#courseid").html(html);
         }, "json");
+        $('#access_course_div').hide();
+
     }
 
     var grupos = function(){
         var courseid =$("#courseid").val();
-        var categoryid =$("#categoryid").val();
 
-        $.get( URL_API + "?type=grupos_modulo&courseid="+courseid+"&categoryid="+categoryid, function( data ) {
+        $.get( URL_API + "?type=grupos_modulo&courseid="+courseid, function( data ) {
 
             var html = '<option value="0">TODOS</option>';
             $.each(data, function(index, item){
-                html += '<option value="'+ item.nome +'">'+ item.nome +'</option>';
+                html += '<option value="'+ item.id +'">'+ item.nome +'</option>';
             });
-            $("#group_name").html(html);
+            $("#groupid").html(html);
         }, "json");
+        $('#grafico_acesso_user').hide();
+        $('#access_course_div').hide();
     }
 
     var perfis_modulo = function(){
@@ -358,7 +287,7 @@
 
         $.get( URL_API + "?type=perfis_modulo&courseid="+courseid, function( data ) {
 
-            var html = '<option value="0">TODOS</option>';
+            var html = '';
             $.each(data, function(index, item){
                 // if(item.id != 5)
                 html += '<option value="'+ item.id +'">'+ item.nome +'</option>';
@@ -366,86 +295,142 @@
             $("#roleid").html(html);
 
         }, "json");
+        $('#grafico_acesso_user').hide();
+        $('#access_course_div').hide();
     }
 
-    perfis_modulo();
 
-    var qtd_dias_online = function(){
+    var troca_curso = function(){
+        if($('#cursoid').val() > 0){
+            courses();
+        }
+        $('#grafico_acesso_user').hide();
+        $('#access_course_div').hide();
+    }
 
-        var categoryid = $('#categoryid').val();
-        var courseid = $('#courseid').val();
-        var roleid = $('#roleid').val();
-        var group_name=  $('#group_name').val();
+    var troca_course = function(){
+        if($('#courseid').val() > 0){
+            grupos();
+            perfis_modulo();
+        }
+
+        $('#access_course_div').hide();
+    }
+
+
+    var ShowChartsUsers = function(){
+
+        var flag = true;
+        $('form input, form select').each(function (x, y) {
+            console.log($(y).val().length);
+            if ($(y).val().length == 0 ) {
+                flag = false;
+            }
+        });
+
+        if(!flag){
+            alert('Todos os campos são obrigatórios.');
+            return false;
+        }
 
         $.ajax({
-            type: "GET",
-            // url: URL_API + "?type=qtd_dias_online2&category=29&courseid=0&roleid=0&group_name=0",
-            url: URL_API + "?type=qtd_dias_online2&category="+categoryid+"&courseid="+courseid+"&roleid="+roleid+"&group_name="+group_name,
+            type: "POST",
+            url: URL_API + "?type=access_tutor",
+            dataType: "json",
+            data: $( "#search_form" ).serialize() ,
+            success: function (data) {
+                var html = '';
+                $.each(data, function(index, acesso){
+
+                    html += '<tr>'+
+                        // '<td>'+acesso.cpf+'</td>'+
+                        '<td>'+acesso.nome+'</td>'+
+                        '<td>'+acesso.grupo+'</td>'+
+                        '<td>'+acesso.ultimoacesso+'</td>'+
+                        '<td><input onclick="checkUsers('+acesso.id+')" type="checkbox" class="chart-user" name="chart[]" id="chart-'+acesso.id+'" value="'+acesso.id+'" data-parsley-mincheck="2" class="flat" /></td>'+
+                        '</tr>';
+                });
+
+                html += '';
+                if(html == ''){
+                    html += '<tr>'+
+                        '<td colspan="4">Nenhum registro encontrado!</td>'+
+                        '</tr>';
+                }
+                $("#tabela_id").html(html);
+                $('#access_course').DataTable();
+                $('#access_course_div').show();
+            }
+        });
+
+    }
+
+    var checkUsers = function(userid){
+
+        var data = [];
+        $('.chart-user').each(function (x, y) {
+            if($(this).is(':checked') == true)
+                data.push($(this).val())
+        });
+
+
+        if(data.length > 0){
+
+            countChartsUsers();
+        }else{
+            console.log('data');
+            $('#grafico_acesso_user').hide();
+        }
+    }
+
+    var countChartsUsers = function(){
+
+        var users = [];
+        $('.chart-user').each(function (x, y) {
+            if($(this).is(':checked') == true)
+                users.push($(this).val())
+        });
+
+        if(users.length == 0){
+            alert('Escolha algum usuário para ver o gráfico.');
+            return false;
+        }
+        console.log(users);
+        $.ajax({
+            type: "POST",
+            url: URL_API + "?type=count_access_tutor&courseid="+$('#courseid').val(),
             // url: 'http://localhost/nead/api-monit/api.json',
             dataType: "json",
+            data: $('.chart-user').serialize(),
             success: function (data) {
 
                 var dados = {names:[], labels:[], data:[]};
 
-                // $.each(data.acesso, function(index, item){
+                $.each(data, function(index, item){
 
+                    dados.names.push(item.nome);
+                    var aux_data = [];
+                    var label = '';
+                    for(x in item.mes_qtd){
+                        label = item.mes_qtd[x].mes +'/'+ item.mes_qtd[x].ano;
+                        dados.labels.push(label);
+                        aux_data.push(item.mes_qtd[x].qtd);
 
-                dados.names.push('Acesso');
-                dados.names.push('Sem Acesso');
-                var aux_data = [];
-                var label = '';
-                // if(index == 'acesso'){
-
-
-                for(x in data.acesso){
-                    label = data.acesso[x].date;
-                    dados.labels.push(label);
-                    aux_data.push(data.acesso[x].users);
-                }
-
-                dados.data.push({
-                    name: 'Acesso',
-                    type: 'bar',
-                    smooth: true,
-                    itemStyle: {
-                        normal: {
-                            areaStyle: {
-                                type: 'default'
+                    }
+                    dados.data.push({
+                        name: item.nome,
+                        type: 'line',
+                        smooth: true,
+                        itemStyle: {
+                            normal: {
+                                areaStyle: {
+                                    type: 'default'
+                                }
                             }
-                        }
-                    },
-                    data: aux_data
+                        },
+                        data: aux_data
+                    });
                 });
-
-                // }else{
-                var aux_data = [];
-                for(x in data.semacesso){
-
-                    label = data.semacesso[x].date;
-                    dados.labels.push(label);
-                    aux_data.push(data.semacesso[x].users);
-                }
-
-                // }
-
-                dados.data.push({
-                    name: 'Sem Acesso',
-                    type: 'bar',
-                    smooth: true,
-                    itemStyle: {
-                        normal: {
-                            areaStyle: {
-                                type: 'default'
-                            }
-                        }
-                    },
-                    data: aux_data
-                });
-
-
-
-
-                // });
                 $('#grafico_acesso_user').show();
                 window.location.href = '#chart-view';
                 console.log(dados);
@@ -455,7 +440,9 @@
 
     }
 
-    qtd_dias_online();
+
+
+
 
     /* ECHRTS */
     function init_echarts(dados) {
@@ -682,8 +669,8 @@
 
             echartLine.setOption({
                 title: {
-                    text: 'Acesso por dia',
-                    subtext: 'Acompanhamento'
+                    text: 'Acesso por Período',
+                    subtext: 'Acompanhemento'
                 },
                 tooltip: {
                     trigger: 'axis'
@@ -719,7 +706,7 @@
                 calculable: true,
                 xAxis: [{
                     type: 'category',
-                    boundaryGap: true,
+                    boundaryGap: false,
                     data: dados.labels
                 }],
                 yAxis: [{

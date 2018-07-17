@@ -161,10 +161,10 @@
 
                         html += '<tr>'+
                             // '<td>'+item.id+'</td>'+
-                            '<td><a onclick="config_disciplina(\''+item.nome+'\')" href="access_courses.html?courseid='+item.id+'">'+item.nome+'</a></td>'+
+                            '<td><a onclick="config_disciplina(\''+item.nome+'\')" href="/admin/reports/accesscourses/?courseid='+item.id+'">'+item.nome+'</a></td>'+
                             // '<td><a href="courses.html?curso='+item.id+'">'+item.nome+'</a></td>'+
                             '<td>'+item.categoria+'</td>'+
-                            '<td><a onclick="config_disciplina(\''+item.nome+'\')" href="access_courses.html?courseid='+item.id+'">'+item.alunos+'</a></td>'+
+                            '<td><a onclick="config_disciplina(\''+item.nome+'\')" href="admin/reports/accesscourses/?courseid='+item.id+'">'+item.alunos+'</a></td>'+
                             '<td>'+item.inicio+'</td>'+
                             '<td>'+item.visivel+'</td>'+
                             '<td>'+item.modificacao+'</td>'+

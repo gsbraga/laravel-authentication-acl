@@ -51,16 +51,23 @@ return [
                 "skip_permissions" => ["users.selfprofile.edit", "users.profile.edit", "users.profile.addfield", "users.profile.deletefield"]
             ],
             [
-                    "name"        => "Groups",
-                    "route"       => "groups",
-                    "link"        => '/admin/groups/list',
-                    "permissions" => ["_superadmin", "_group-editor"]
+                "name"        => "Groups",
+                "route"       => "groups",
+                "link"        => '/admin/groups/list',
+                "permissions" => ["_superadmin", "_group-editor"]
             ],
 
             [
                 "name"        => "Courses",
                 "route"       => "courses",
                 "link"        => '/admin/courses/list',
+                "permissions" => ["_superadmin", "_course-editor"]
+            ],
+
+            [
+                "name"        => "Reports",
+                "route"       => "reports",
+                "link"        => '/admin/reports/list',
                 "permissions" => ["_superadmin", "_course-editor"]
             ],
 

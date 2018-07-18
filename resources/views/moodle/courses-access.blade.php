@@ -13,21 +13,21 @@
     {{--<link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">--}}
     <!-- NProgress -->
     {{--<link href="../vendors/nprogress/nprogress.css" rel="stylesheet">--}}
-    {{--{!! HTML::style('packages/gentelella/vendors/nprogress/nprogress.css') !!}--}}
+    {!! HTML::style('packages/gentelella/vendors/nprogress/nprogress.css') !!}
     <!-- iCheck -->
     {{--<link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">--}}
-    {{--{!! HTML::style('packages/gentelella/vendors/iCheck/skins/flat/green.css') !!}--}}
+    {!! HTML::style('packages/gentelella/vendors/iCheck/skins/flat/green.css') !!}
     <!-- Datatables -->
     {{--<link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">--}}
-{{--    {!! HTML::style('packages/gentelella/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') !!}--}}
+    {!! HTML::style('packages/gentelella/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') !!}
     {{--<link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">--}}
-{{--    {!! HTML::style('packages/gentelella/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') !!}--}}
+    {!! HTML::style('packages/gentelella/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') !!}
     {{--<link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">--}}
-{{--    {!! HTML::style('packages/gentelella/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') !!}--}}
+    {!! HTML::style('packages/gentelella/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') !!}
     {{--<link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">--}}
-{{--    {!! HTML::style('packages/gentelella/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') !!}--}}
+    {!! HTML::style('packages/gentelella/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') !!}
     {{--<link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">--}}
-    {{--{!! HTML::style('packages/gentelella/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') !!}--}}
+    {!! HTML::style('packages/gentelella/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') !!}
 
     <!-- bootstrap-daterangepicker -->
     {{--<link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">--}}
@@ -145,7 +145,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Cursos do Moodle</h2>
+                            <h2>Atividades realizadas</h2>
 
                             <div class="clearfix"></div>
                         </div>
@@ -174,8 +174,6 @@
 
             </div>
         </div>
-    </div>
-
 @stop
 
 @section('footer_scripts')

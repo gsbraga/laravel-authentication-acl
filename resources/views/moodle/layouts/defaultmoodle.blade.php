@@ -25,7 +25,7 @@
     <![endif]-->
 </head>
 
-    <body>
+    <body style="overflow-x: hidden;">
         {{-- content --}}
         <div class="container">
             @yield('container')

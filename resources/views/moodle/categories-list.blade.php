@@ -37,7 +37,7 @@
                         {{--<p style="display:  none; ">Ciência da Computação</p>--}}
                     </div>
                     <div class="card-footer-course">
-                        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6"><a href="/courses/?id={{$course->id}}&category_id={{$course->category_id}}"><i class="fa fa-book "></i> Disciplinas</a></div>
+                        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6"><a href="/admin/reports/courses/?id={{$course->id}}&curso={{$course->category_id}}"><i class="fa fa-book "></i> Disciplinas</a></div>
                         <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6"><a href="/admin/courses/userscourses?id={{$course->id}}"><i class="fa fa-cogs "></i> Gerenciar</a></div>
                         {{--<a href="/admin/courses/userscourses?id={{$course->id}}"><h4>Acessar</h4></a>--}}
                     </div>

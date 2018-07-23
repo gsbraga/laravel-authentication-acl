@@ -45,7 +45,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>{{ $category->fullname}}</h2>
+                            <h2>{{ $curso_info->fullname}}</h2>
 
                             <div class="clearfix"></div>
                         </div>

@@ -2,7 +2,7 @@
 @extends('laravel-authentication-acl::moodle.layouts.defaultmoodle')
 
 @section('title')
-    Disciplinas
+    Relatório de Atividades
 @stop
 
     <!-- Bootstrap -->
@@ -48,23 +48,12 @@
         </div>
         <div class="panel-body">
 
-            <div class="row info_modulo" style="display: none;">
+            <div class="row info_modulo">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <label class="control-label col-md-2 col-sm-2 col-xs-2" for="first-name">Disciplina: </label>
-                    <span id="nome_disciplina" class="col-md-10 col-sm-10 col-xs-10"></span>
+                    <label class="control-label col-md-2 col-sm-2 col-xs-2 col-lg-1" for="first-name">Curso: </label>
+                    <span id="nome_disciplina" class="col-md-10 col-sm-10 col-xs-10">{{ $curso_info->name }} - {{ $curso_info->fullname }}</span>
                 </div>
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <label class="control-label col-md-2 col-sm-2 col-xs-2" for="first-name">Início: </label>
-                    <span id="inicio_disciplina" class="col-md-10 col-sm-10 col-xs-10"></span>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-6">
-                    <label class="control-label col-md-6 col-sm-6 col-xs-6" for="first-name">Status: </label>
-                    <span id="status_disciplina" class="col-md-3 col-sm-3 col-xs-3"></span>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-6">
-                    <label class="control-label col-md-6 col-sm-6 col-xs-6" for="first-name">Alunos: </label>
-                    <span id="alunos_disciplina" class="col-md-3 col-sm-3 col-xs-3"></span>
-                </div>
+
             </div>
             <hr/>
 
@@ -80,45 +69,43 @@
                             <form id="search_form" class="form-horizontal form-label-left">
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-4" for="first-name">Polo <span class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-4" for="first-name">Disciplina <span class="required">*</span>
                                     </label>
                                     <div class="col-md-4 col-sm-6 col-xs-8 form-group has-feedback">
-                                        <select onchange="troca_modulo()" id="polo_id" name="polo_id" required="required" class="form-control col-md-7 col-xs-12">
+                                        <select onchange="troca_course()" id="courseid" name="courseid" required="required" class="form-control col-md-7 col-xs-12">
+                                            <option value="0">Selecione uma Disciplina</option>
+                                        </select>
+                                        <span id="link_courseid"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-4" for="last-name">Atividade <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-4 col-sm-6 col-xs-8 form-group has-feedback">
+                                        <select onchange="troca_atividade()" id="assignid" name="assignid" required="required" class="form-control col-md-7 col-xs-12">
+                                            <option value="0">Selecione uma atividade</option>
+                                        </select>
+                                        <span id="link_assignid"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-4" for="last-name">Polo <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-4 col-sm-6 col-xs-8 form-group has-feedback">
+                                        <select onchange="troca_group()" id="groupid" name="groupid" required="required" class="form-control col-md-7 col-xs-12">
                                             <option value="0">TODOS</option>
                                         </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group" style="display: none;">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-4" for="last-name">Perfil <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-4 col-sm-6 col-xs-8 form-group has-feedback">
-                                        <select id="role_id" name="role_id" required="required" class="form-control col-md-7 col-xs-12">
-                                            <option value="0">Selecione um perfil</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-4" for="last-name">Data início <span class="required">*</span></label>
-                                    <div class="col-md-4 col-sm-6 col-xs-8 form-group has-feedback">
-                                        <input type="text" class="form-control" id="date_initial" name="date_initial" data-inputmask="'mask': '99/99/9999'" placeholder="dd/mm/AAAA">
-                                        {{--<span class="glyphicon glyphicon-calendar form-control-feedback right" aria-hidden="true"></span>--}}
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-4" for="last-name">Data fim <span class="required">*</span></label>
-                                    <div class="col-md-4 col-sm-6 col-xs-8 form-group has-feedback">
-                                        <input type="text" id="date_final" name="date_final" class="form-control" data-inputmask="'mask': '99/99/9999'" placeholder="dd/mm/AAAA">
-                                        {{--<span class="glyphicon glyphicon-calendar form-control-feedback right" aria-hidden="true"></span>--}}
+                                        <span id="link_groupid"></span>
                                     </div>
                                 </div>
 
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
                                     <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-3">
-                                        <button class="btn btn-default" type="reset">Limpar campos</button>
-                                        <button type="button" onclick="acessoModulo()" class="btn btn-success">Pesquisar</button>
+                                        <button class="btn btn-primary" type="reset">Limpar campos</button>
+                                        <button type="button" onclick="showAtividades()" class="btn btn-success">Pesquisar</button>
                                     </div>
                                 </div>
 
@@ -145,26 +132,36 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Atividades realizadas</h2>
+                            <h2>Atividades</h2>
+                            <!-- <ul class="nav navbar-right panel_toolbox">
+                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li>
+                              <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
 
+                              </li>
+                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                              </li>
+                            </ul> -->
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            <p class="text-muted font-13 m-b-30 period-descritption-show" style="display: none;">
-
+                            <p class="text-muted font-13 m-b-30">
+                                Esta listagem mostra todos os envios da atividade e feedbacks.
                             </p>
+                            <h4 class="data_entrega" style="color: black;">Data de entrega: </h4>
+                            <div class="nome_tutor"></div>
 
-                            <table id="access_course" class="table table-striped table-bordered">
+                            <table id="assign_course" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>CPF</th>
-                                    <th>E-mail</th>
                                     <th>Nome</th>
                                     <th>Polo</th>
-                                    <th>Fórum</th>
-                                    <th>Atividades</th>
-                                    <th>Questionário</th>
-                                    <th>Último Acesso</th>
+                                    <th>Postagens</th>
+                                    <th>Nota</th>
+                                    <th>Feedback</th>
+                                    <th>Envio</th>
+                                    <th>Correção</th>
                                 </tr>
                                 </thead>
                             </table>
@@ -228,82 +225,151 @@
 
 <script type="text/javascript">
 
+    var atividades_id = [];
     var table;
 
-    $('#date_initial, #date_final').datetimepicker({
-        format: 'DD/MM/YYYY'
-    });
+    var limpar_dados = function(){
 
-    var course_info = function(){
-
-        var courseid = getUrlParameters("courseid", "", true);
-
-        $.get( URL_API + "?type=modulo_curso&courseid="+courseid, function( data ) {
-
-            $("#nome_disciplina").html(data.nome);
-            $("#inicio_disciplina").html(data.inicio);
-            $("#status_disciplina").html(data.visivel);
-            $("#alunos_disciplina").html(data.alunos);
-            $(".info_modulo").show();
-
-        }, "json");
-
-    }
-    course_info();
-
-    var grupos_modulo = function(){
-
-        var courseid = getUrlParameters("courseid", "", true);
-
-        $.get( URL_API + "?type=grupos_modulo&courseid="+courseid, function( data ) {
-
-            var html = '';
-            $.each(data, function(index, item){
-                html += '<option value="'+ item.id +'">'+ item.nome +'</option>';
-            });
-            $("#polo_id").append(html);
-            // console.log(html);
-
-            var groupid = getUrlParameters("groupid", "", true);
-            if(groupid != false){
-                $("#polo_id").val(groupid);
-            }
-
-        }, "json");
-    }
-
-    grupos_modulo();
-
-    var troca_modulo = function(){
-        if ( $.fn.dataTable.isDataTable( '#access_course' ) ) {
+        if ( $.fn.dataTable.isDataTable( '#assign_course' ) ) {
+            table.clear();
             table.destroy();
-            $('#access_course tbody').html('<tr><td colspan="8"></td></tr>');
+        }
+
+        $(".nome_tutor").html('');
+    }
+
+    var showLinks = function(){
+        if($("#courseid").val() != 0){
+            $("#link_courseid").html('<a class="red" target="_blank" href="'+aux_info.url+'/course/view.php?id='+ $("#courseid").val()+'">Disciplina</a>');
+        }else{
+            $("#link_courseid").html('<a></a>');
+        }
+
+        if($("#assignid").val() != 0){
+            var assignlink = 0;
+            for(x in atividades_id){
+                if($("#assignid").val() == atividades_id[x].id){
+                    assignlink = atividades_id[x].instance;
+                    break;
+                }
+            }
+            $("#link_assignid").html('<a class="red" target="_blank" href="'+aux_info.url+'/mod/assign/view.php?id='+ assignlink +'">Atividade</a>');
+        }else{
+            $("#link_assignid").html('<a></a>');
+        }
+
+        if($("#groupid").val() != 0 && $("#courseid").val() != 0){
+            $("#link_groupid").html('<a class="red" target="_blank" href="'+aux_info.url+'/enrol/users.php?id='+$("#courseid").val()+'&filtergroup='+ $("#groupid").val()+'">Grupo</a>');
+        }else{
+            $("#link_groupid").html('<a></a>');
         }
     }
 
-    var perfis_modulo = function(){
-        var courseid = getUrlParameters("courseid", "", true);
+    var courses = function(){
 
-        $.get( URL_API + "?type=perfis_modulo&courseid="+courseid, function( data ) {
+        var curso = getUrlParameters("curso", "", true);
+
+        $.get( URL_API + "?type=modulos_curso&curso="+curso, function( data ) {
 
             var html = '';
             $.each(data, function(index, item){
                 html += '<option value="'+ item.id +'">'+ item.nome +'</option>';
             });
-            $("#role_id").append(html);
-            $('#role_id option[value=5]').attr('selected','selected');
-
+            $("#courseid").append(html);
         }, "json");
     }
 
-    perfis_modulo();
+    courses();
 
-    var acessoModulo = function(){
+    var troca_course = function(){
+        if($('#courseid').val() > 0){
+            atividades($('#courseid').val());
+            grupos($('#courseid').val());
+        }
+        limpar_dados();
+        showLinks();
+    }
+
+    var troca_atividade = function(){
+        limpar_dados();
+        showLinks();
+    }
+
+    var troca_group = function(){
+        limpar_dados();
+        showLinks();
+    }
+
+    var atividades = function(courseid){
+
+        $.get( URL_API + "?type=assign_modulo&courseid="+courseid, function( data ) {
+
+            var html = '<option value="0">Selecione um Quiz</option>';
+            $.each(data, function(index, item){
+                html += '<option value="'+ item.id +'">'+ item.nome +'</option>';
+                atividades_id.push(item);
+            });
+            $("#assignid").html(html);
+        }, "json");
+    }
+
+    var grupos = function(courseid){
+
+        $.get( URL_API + "?type=grupos_modulo&courseid="+courseid, function( data ) {
+
+            var html = '<option value="0">TODOS</option>';
+            $.each(data, function(index, item){
+                html += '<option value="'+ item.id +'">'+ item.nome +'</option>';
+            });
+            $("#groupid").html(html);
+        }, "json");
+    }
+
+    var data_entrega = function(){
+        var assignid = $('#assignid').val();
+        var groupid = $('#groupid').val();
+
+        $.get( URL_API + "?type=assign_data_entrega&assignid="+assignid+"&groupid="+groupid, function( data ) {
+
+            var html = '';
+            $.each(data, function(index, item){
+                if(item.entrega != null && item.entrega != "31/12/1969"){
+                    html += item.entrega;
+                }else{
+                    html = '-';
+                }
+            });
+            $(".data_entrega").html('Data de entrega: '+html);
+
+        }, "json");
+
+    }
+
+    var nome_tutor = function(){
+        var courseid = $('#courseid').val();
+        var groupid = $('#groupid').val();
+
+        $.get( URL_API + "?type=name_tutor&courseid="+courseid+"&groupid="+groupid, function( data ) {
+
+            var html = '';
+            $.each(data, function(index, item){
+                // if(data.length > 1 && index > 0){
+                //     html += '';
+                // }
+                html += '<li class="red">'+item.nome+'</li>';
+            });
+
+            $(".nome_tutor").html('<small style="color: black;">Tutor:</small> <ul>'+html+'</li>');
+
+        }, "json");
+
+    }
+
+    var showAtividades = function(){
         $('.loading_icon').show();
-
         var flag = true;
-        $('form input').each(function (x, y) {
-            // console.log($(y).val().length);
+        $('form input, form select').each(function (x, y) {
+            console.log($(y).val().length);
             if ($(y).val().length == 0 ) {
                 flag = false;
             }
@@ -311,106 +377,80 @@
 
         if(!flag){
             $('.loading_icon').hide();
-
-            alert('Escolha a data de início e fim.');
+            alert('Escolha um perfil de usuário');
             return false;
         }
 
-        $('.period-descritption-show').html('Esta listagem mostra todos os acessos dos alunos entre '+$('#date_initial').val()+' até '+$('#date_final').val()+'.');
-        $('.period-descritption-show').show();
+        data_entrega();
+        nome_tutor();
 
-        var courseid = getUrlParameters("courseid", "", true);
+        var groupid = $('#groupid').val();
+        var assignid = $('#assignid').val();
+
         $.ajax({
-            type: "POST",
-            url: URL_API + "?type=acesso_alunos_modulo&courseid="+courseid,
+            type: "GET",
+            url: URL_API + "?type=assign_student&groupid="+groupid+"&assignid="+assignid+"&courseid="+$('#courseid').val(),
             dataType: "json",
-            data: $( "#search_form" ).serialize() ,
             success: function (data) {
+                // var html = '';
                 var dados = [];
-                $.each(data, function(index, acesso){
+                var nota = '-';
+                var feedback = '-';
+                var envio = '-';
+                var correcao = '-';
+                var grupo = '-';
 
-                    // html += '<tr>'+
-                    //             '<td>'+acesso.cpf+'</td>'+
-                    //             '<td>'+acesso.email+'</td>'+
-                    //             '<td><a target="_blank" href="access_activity.html?userid='+acesso.id+'&courseid='+courseid+'&date_initial='+$('#date_initial').val()+'&date_final='+$('#date_final').val()+'">'+acesso.nome+'</a></td>'+
-                    //             '<td>'+acesso.grupo+'</td>'+
-                    //             '<td>'+acesso.forum_feito+'/'+acesso.forum+'</td>'+
-                    //             '<td>'+acesso.atividade_feita+'/'+acesso.atividades+'</td>'+
-                    //             '<td>'+acesso.questionario_feito+'/'+acesso.questionario+'</td>'+
-                    //             '<td>'+acesso.ultimoacesso+'</td>'+
-                    //         '</tr>';
+
+                $.each(data, function(index, item){
+                    if(item.nota == null){ nota = '-'; }else{nota = item.nota;}
+                    if(item.feedback == null){ feedback = '-'; }else{feedback = item.feedback;}
+                    if(item.envio == null){ envio = '-'; }else{envio = item.envio;}
+                    if(item.correcao == null){ correcao = '-'; }else{correcao = item.correcao;}
+                    if(item.grupo == null){ grupo = '-'; }else{grupo = item.grupo;}
+
                     dados.push({
-                        'CPF': acesso.cpf,
-                        'E-mail': acesso.email,
-                        'Nome': '<a target="_blank" href="/admin/reports/accessactivity/?userid='+acesso.id+'&courseid='+courseid+'&date_initial='+$('#date_initial').val()+'&date_final='+$('#date_final').val()+'">'+acesso.nome+'</a>',
-                        'Polo': acesso.grupo,
-                        'Fórum': acesso.forum_feito+' / '+acesso.forum,
-                        'Atividades': acesso.atividade_feita+' / '+acesso.atividades,
-                        'Questionário': acesso.questionario_feito+' / '+acesso.questionario,
-                        'Último Acesso': acesso.ultimoacesso
+                        'Nome': item.nome,
+                        'Polo': grupo,
+                        'Postagens': item.total,
+                        'Nota': item.nota,
+                        'Feedback': feedback,
+                        'Envio': envio,
+                        'Correção': correcao,
                     });
+
                 });
 
-
-                // var table = $('#access_course').DataTable();
-
-                if ( $.fn.dataTable.isDataTable( '#access_course' ) ) {
-
-                    table.destroy();
-                }
-                table = $('#access_course').DataTable( {
+                table = $('#assign_course').DataTable({
                     paging: true,
                     data: dados,
                     columns: [
-                        {data: 'CPF' },
-                        {data: 'E-mail' },
                         {data: 'Nome' },
                         {data: 'Polo' },
-                        {data: 'Fórum' },
-                        {data: 'Atividades' },
-                        {data: 'Questionário' },
-                        {data: 'Último Acesso' }
+                        {data: 'Postagens' },
+                        {data: 'Nota' },
+                        {data: 'Feedback' },
+                        {data: 'Envio' },
+                        {data: 'Correção' }
                     ],
                     dom: "Blfrtip",
+
                     buttons: [
-                        {
-                            extend: "copy",
-                            className: "btn-sm"
-                        },
-                        {
-                            extend: "csv",
-                            className: "btn-sm"
-                        },
-                        {
-                            extend: "excel",
-                            className: "btn-sm"
-                        },
-                        // {
-                        //   extend: "pdfHtml5",
-                        //   className: "btn-sm"
-                        // },
-                        // {
-                        //   extend: "print",
-                        //   className: "btn-sm"
-                        // }
+                        $.extend( true, {}, buttonCommon, {
+                            extend: 'copyHtml5'
+                        } ),
+                        $.extend( true, {}, buttonCommon, {
+                            extend: 'excelHtml5'
+                        } ),
+                        $.extend( true, {}, buttonCommon, {
+                            extend: 'pdfHtml5'
+                        } )
                     ],
-                    // buttons: [
-                    //     $.extend( true, {}, buttonCommon, {
-                    //         extend: 'copyHtml5'
-                    //     } ),
-                    //     $.extend( true, {}, buttonCommon, {
-                    //         extend: 'excelHtml5'
-                    //     } ),
-                    //     $.extend( true, {}, buttonCommon, {
-                    //         extend: 'pdfHtml5'
-                    //     } )
-                    // ],
                     responsive: true
                 } );
                 $('.loading_icon').hide();
-
             }
         });
+
 
     }
 

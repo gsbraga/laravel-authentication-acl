@@ -156,3 +156,7 @@ img {
 .box-course{
     padding-bottom: 10px;
 }
+
+.scroll-auto{
+    overflow: auto;
+}

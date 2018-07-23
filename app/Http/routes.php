@@ -28,13 +28,6 @@ Route::group(['middleware' => ['web']], function ()
     ]);
 
 
-    //Listagem das Disciplinas
-    Route::get('/courses', [
-        "as"   => "courses.moodle",
-        "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getCoursesList'
-    ]);
-
-
 
     Route::get('/admin/login', [
             "as"   => "user.admin.login",
@@ -259,19 +252,51 @@ Route::group(['middleware' => ['web']], function ()
         /**
          * reports
          */
+
+        Route::get('admin/reports/courses', [
+            "as"   => "courses.moodle",
+            "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getCoursesList'
+        ]);
+
+
         Route::get('admin/reports/access', [
             "as"   => "moodle.access",
             "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleAccess'
         ]);
 
         Route::get('admin/reports/useraccess', [
-            "as"   => "moodle.access",
+            "as"   => "moodle.usersaccess",
             "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleUserAccess'
         ]);
 
         Route::get('admin/reports/accesscourses', [
-            "as"   => "moodle.access",
+            "as"   => "moodle.accesscourses",
             "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleAccessCourses'
+        ]);
+
+        Route::get('admin/reports/accessactivity', [
+            "as"   => "moodle.accessactvity",
+            "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleAccessActivity'
+        ]);
+
+        Route::get('admin/reports/reportactivity', [
+            "as"   => "moodle.reportactvity",
+            "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleReportActivity'
+        ]);
+
+        Route::get('admin/reports/reportforum', [
+            "as"   => "moodle.reportforum",
+            "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleReportForum'
+        ]);
+
+        Route::get('admin/reports/reportquiz', [
+            "as"   => "moodle.reportquiz",
+            "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleReportQuiz'
+        ]);
+
+        Route::get('admin/reports/reportcourse', [
+            "as"   => "moodle.reportcourse",
+            "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleReportCourse'
         ]);
 
 

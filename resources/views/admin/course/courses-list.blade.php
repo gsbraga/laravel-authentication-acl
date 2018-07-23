@@ -45,7 +45,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>{{ $category->fullname}}</h2>
+                            <h2>{{ $curso_info->fullname}}</h2>
 
                             <div class="clearfix"></div>
                         </div>
@@ -141,12 +141,12 @@
 <script type="text/javascript">
 
 
+    var curso = getUrlParameters("curso", "", true);
 
     localStorage.setItem('categorieid', getUrlParameters("curso", "", true));
 
     var courses = function(){
 
-        var curso = getUrlParameters("category_id", "", true);
 
         if(curso != false){
 
@@ -161,10 +161,10 @@
 
                         html += '<tr>'+
                             // '<td>'+item.id+'</td>'+
-                            '<td><a onclick="config_disciplina(\''+item.nome+'\')" href="/admin/reports/accesscourses/?courseid='+item.id+'">'+item.nome+'</a></td>'+
+                            '<td><a onclick="config_disciplina(\''+item.nome+'\')" href="/admin/reports/accesscourses/?courseid='+item.id+'&curso='+curso+'">'+item.nome+'</a></td>'+
                             // '<td><a href="courses.html?curso='+item.id+'">'+item.nome+'</a></td>'+
                             '<td>'+item.categoria+'</td>'+
-                            '<td><a onclick="config_disciplina(\''+item.nome+'\')" href="/admin/reports/accesscourses/?courseid='+item.id+'">'+item.alunos+'</a></td>'+
+                            '<td><a onclick="config_disciplina(\''+item.nome+'\')" href="/admin/reports/accesscourses/?courseid='+item.id+'&curso='+curso+'">'+item.alunos+'</a></td>'+
                             '<td>'+item.inicio+'</td>'+
                             '<td>'+item.visivel+'</td>'+
                             '<td>'+item.modificacao+'</td>'+

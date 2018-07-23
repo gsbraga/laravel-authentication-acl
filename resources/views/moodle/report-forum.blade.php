@@ -2,7 +2,7 @@
 @extends('laravel-authentication-acl::moodle.layouts.defaultmoodle')
 
 @section('title')
-    Disciplinas
+    Relatório de Fórum
 @stop
 
     <!-- Bootstrap -->
@@ -48,23 +48,12 @@
         </div>
         <div class="panel-body">
 
-            <div class="row info_modulo" style="display: none;">
+            <div class="row info_modulo">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <label class="control-label col-md-2 col-sm-2 col-xs-2" for="first-name">Disciplina: </label>
-                    <span id="nome_disciplina" class="col-md-10 col-sm-10 col-xs-10"></span>
+                    <label class="control-label col-md-2 col-sm-2 col-xs-2 col-lg-1" for="first-name">Curso: </label>
+                    <span id="nome_disciplina" class="col-md-10 col-sm-10 col-xs-10">{{ $curso_info->name }} - {{ $curso_info->fullname }}</span>
                 </div>
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <label class="control-label col-md-2 col-sm-2 col-xs-2" for="first-name">Início: </label>
-                    <span id="inicio_disciplina" class="col-md-10 col-sm-10 col-xs-10"></span>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-6">
-                    <label class="control-label col-md-6 col-sm-6 col-xs-6" for="first-name">Status: </label>
-                    <span id="status_disciplina" class="col-md-3 col-sm-3 col-xs-3"></span>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-6">
-                    <label class="control-label col-md-6 col-sm-6 col-xs-6" for="first-name">Alunos: </label>
-                    <span id="alunos_disciplina" class="col-md-3 col-sm-3 col-xs-3"></span>
-                </div>
+
             </div>
             <hr/>
 
@@ -80,45 +69,43 @@
                             <form id="search_form" class="form-horizontal form-label-left">
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-4" for="first-name">Polo <span class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-4" for="first-name">Disciplina <span class="required">*</span>
                                     </label>
                                     <div class="col-md-4 col-sm-6 col-xs-8 form-group has-feedback">
-                                        <select onchange="troca_modulo()" id="polo_id" name="polo_id" required="required" class="form-control col-md-7 col-xs-12">
+                                        <select onchange="troca_course()" id="courseid" name="courseid" required="required" class="form-control col-md-7 col-xs-12">
+                                            <option value="0">Selecione uma Disciplina</option>
+                                        </select>
+                                        <span id="link_courseid"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-4" for="last-name">Fórum <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-4 col-sm-6 col-xs-8 form-group has-feedback">
+                                        <select onchange="troca_forum()" id="forumid" name="forumid" required="required" class="form-control col-md-7 col-xs-12">
+                                            <option value="0">Selecione um Fórum</option>
+                                        </select>
+                                        <span id="link_forumid"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-4" for="last-name">Polo <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-4 col-sm-6 col-xs-8 form-group has-feedback">
+                                        <select onchange="troca_group()" id="groupid" name="groupid" required="required" class="form-control col-md-7 col-xs-12">
                                             <option value="0">TODOS</option>
                                         </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group" style="display: none;">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-4" for="last-name">Perfil <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-4 col-sm-6 col-xs-8 form-group has-feedback">
-                                        <select id="role_id" name="role_id" required="required" class="form-control col-md-7 col-xs-12">
-                                            <option value="0">Selecione um perfil</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-4" for="last-name">Data início <span class="required">*</span></label>
-                                    <div class="col-md-4 col-sm-6 col-xs-8 form-group has-feedback">
-                                        <input type="text" class="form-control" id="date_initial" name="date_initial" data-inputmask="'mask': '99/99/9999'" placeholder="dd/mm/AAAA">
-                                        {{--<span class="glyphicon glyphicon-calendar form-control-feedback right" aria-hidden="true"></span>--}}
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-4" for="last-name">Data fim <span class="required">*</span></label>
-                                    <div class="col-md-4 col-sm-6 col-xs-8 form-group has-feedback">
-                                        <input type="text" id="date_final" name="date_final" class="form-control" data-inputmask="'mask': '99/99/9999'" placeholder="dd/mm/AAAA">
-                                        {{--<span class="glyphicon glyphicon-calendar form-control-feedback right" aria-hidden="true"></span>--}}
+                                        <span id="link_groupid"></span>
                                     </div>
                                 </div>
 
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
                                     <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-3">
-                                        <button class="btn btn-default" type="reset">Limpar campos</button>
-                                        <button type="button" onclick="acessoModulo()" class="btn btn-success">Pesquisar</button>
+                                        <button class="btn btn-primary" type="reset">Limpar campos</button>
+                                        <button type="button" onclick="showForuns()" class="btn btn-success">Pesquisar</button>
                                     </div>
                                 </div>
 
@@ -145,26 +132,32 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Atividades realizadas</h2>
+                            <h2>Fórum</h2>
+                            <!-- <ul class="nav navbar-right panel_toolbox">
+                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li>
+                              <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
 
+                              </li>
+                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                              </li>
+                            </ul> -->
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            <p class="text-muted font-13 m-b-30 period-descritption-show" style="display: none;">
-
+                            <p class="text-muted font-13 m-b-30">
+                                Este relatório mostra todos os envios do dórum e feedbacks.
                             </p>
+                            <div class="nome_tutor"></div>
 
-                            <table id="access_course" class="table table-striped table-bordered">
+                            <table id="forum_course" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>CPF</th>
-                                    <th>E-mail</th>
                                     <th>Nome</th>
                                     <th>Polo</th>
-                                    <th>Fórum</th>
-                                    <th>Atividades</th>
-                                    <th>Questionário</th>
-                                    <th>Último Acesso</th>
+                                    <th>Participações</th>
+                                    <th>Feedbacks</th>
                                 </tr>
                                 </thead>
                             </table>
@@ -228,189 +221,211 @@
 
 <script type="text/javascript">
 
+    var foruns_id = [];
     var table;
 
-    $('#date_initial, #date_final').datetimepicker({
-        format: 'DD/MM/YYYY'
-    });
+    var showLinks = function(){
+        if($("#courseid").val() != 0){
+            $("#link_courseid").html('<a class="red" target="_blank" href="'+aux_info.url+'/course/view.php?id='+ $("#courseid").val()+'">Disciplina</a>');
+        }else{
+            $("#link_courseid").html('<a></a>');
+        }
 
-    var course_info = function(){
+        if($("#forumid").val() != 0){
+            var forumlink = 0;
+            for(x in foruns_id){
+                if($("#forumid").val() == foruns_id[x].id){
+                    forumlink = foruns_id[x].instance;
+                    break;
+                }
+            }
+            $("#link_forumid").html('<a class="red" target="_blank" href="'+aux_info.url+'/mod/forum/view.php?id='+ forumlink +'">Fórum</a>');
+        }else{
+            $("#link_forumid").html('<a></a>');
+        }
 
-        var courseid = getUrlParameters("courseid", "", true);
-
-        $.get( URL_API + "?type=modulo_curso&courseid="+courseid, function( data ) {
-
-            $("#nome_disciplina").html(data.nome);
-            $("#inicio_disciplina").html(data.inicio);
-            $("#status_disciplina").html(data.visivel);
-            $("#alunos_disciplina").html(data.alunos);
-            $(".info_modulo").show();
-
-        }, "json");
+        if($("#groupid").val() != 0 && $("#courseid").val() != 0){
+            $("#link_groupid").html('<a class="red" target="_blank" href="'+aux_info.url+'/enrol/users.php?id='+$("#courseid").val()+'&filtergroup='+ $("#groupid").val()+'">Grupo</a>');
+        }else{
+            $("#link_groupid").html('<a></a>');
+        }
 
     }
-    course_info();
 
-    var grupos_modulo = function(){
+    var limpar_dados = function(){
 
-        var courseid = getUrlParameters("courseid", "", true);
+        if ( $.fn.dataTable.isDataTable( '#forum_course' ) ) {
+            table.clear();
+            table.destroy();
+        }
+
+        $(".nome_tutor").html('');
+    }
+
+    var courses = function(){
+
+        var curso = getUrlParameters("curso", "", true);
+
+        $.get( URL_API + "?type=modulos_curso&curso="+curso, function( data ) {
+
+            var html = '';
+            $.each(data, function(index, item){
+                html += '<option value="'+ item.id +'">'+ item.nome +'</option>';
+            });
+            $("#courseid").append(html);
+        }, "json");
+    }
+
+    courses();
+
+    var troca_course = function(){
+        if($('#courseid').val() > 0){
+            foruns($('#courseid').val());
+            grupos($('#courseid').val());
+        }
+        limpar_dados();
+        showLinks();
+    }
+
+    var troca_forum = function(){
+        limpar_dados();
+        showLinks();
+    }
+
+    var troca_group = function(){
+        limpar_dados();
+        showLinks();
+    }
+
+    var foruns = function(courseid){
+
+        $.get( URL_API + "?type=foruns_modulo&courseid="+courseid, function( data ) {
+
+            var html = '';
+            $.each(data, function(index, item){
+                html += '<option value="'+ item.id +'">'+ item.name +'</option>';
+                foruns_id.push(item);
+            });
+            $("#forumid").append(html);
+        }, "json");
+    }
+
+    var grupos = function(courseid){
 
         $.get( URL_API + "?type=grupos_modulo&courseid="+courseid, function( data ) {
 
-            var html = '';
+            var html = '<option value="0">TODOS</option>';
             $.each(data, function(index, item){
                 html += '<option value="'+ item.id +'">'+ item.nome +'</option>';
             });
-            $("#polo_id").append(html);
-            // console.log(html);
-
-            var groupid = getUrlParameters("groupid", "", true);
-            if(groupid != false){
-                $("#polo_id").val(groupid);
-            }
-
+            $("#groupid").html(html);
         }, "json");
     }
 
-    grupos_modulo();
+    var nome_tutor = function(){
+        var courseid = $('#courseid').val();
+        var groupid = $('#groupid').val();
 
-    var troca_modulo = function(){
-        if ( $.fn.dataTable.isDataTable( '#access_course' ) ) {
-            table.destroy();
-            $('#access_course tbody').html('<tr><td colspan="8"></td></tr>');
-        }
-    }
-
-    var perfis_modulo = function(){
-        var courseid = getUrlParameters("courseid", "", true);
-
-        $.get( URL_API + "?type=perfis_modulo&courseid="+courseid, function( data ) {
+        $.get( URL_API + "?type=name_tutor&courseid="+courseid+"&groupid="+groupid, function( data ) {
 
             var html = '';
             $.each(data, function(index, item){
-                html += '<option value="'+ item.id +'">'+ item.nome +'</option>';
+                // if(data.length > 1 && index > 0){
+                //     html += '';
+                // }
+                html += '<li class="red">'+item.nome+'</li>';
             });
-            $("#role_id").append(html);
-            $('#role_id option[value=5]').attr('selected','selected');
+
+            $(".nome_tutor").html('<small style="color: black;">Tutor:</small> <ul>'+html+'</li>');
 
         }, "json");
+
     }
 
-    perfis_modulo();
+    var showForuns = function(){
 
-    var acessoModulo = function(){
         $('.loading_icon').show();
-
         var flag = true;
-        $('form input').each(function (x, y) {
-            // console.log($(y).val().length);
+        $('form input, form select').each(function (x, y) {
+            console.log($(y).val().length);
             if ($(y).val().length == 0 ) {
                 flag = false;
             }
         });
 
         if(!flag){
-            $('.loading_icon').hide();
 
-            alert('Escolha a data de início e fim.');
+            $('.loading_icon').hide();
+            alert('Todos os campos são obrigatórios');
             return false;
         }
 
-        $('.period-descritption-show').html('Esta listagem mostra todos os acessos dos alunos entre '+$('#date_initial').val()+' até '+$('#date_final').val()+'.');
-        $('.period-descritption-show').show();
+        nome_tutor();
 
-        var courseid = getUrlParameters("courseid", "", true);
+        var groupid = $('#groupid').val();
+        var forumid = $('#forumid').val();
+        var courseid = $('#courseid').val();
+
         $.ajax({
-            type: "POST",
-            url: URL_API + "?type=acesso_alunos_modulo&courseid="+courseid,
+            type: "GET",
+            url: URL_API + "?type=forum_student&courseid="+courseid+"&groupid="+groupid+"&forumid="+forumid,
             dataType: "json",
-            data: $( "#search_form" ).serialize() ,
             success: function (data) {
+                // var html = '';
+                var grupo = '-';
                 var dados = [];
-                $.each(data, function(index, acesso){
+
+                $.each(data, function(index, item){
+                    if(item.grupo == null){ grupo = '-'; }else{grupo = item.grupo;}
 
                     // html += '<tr>'+
-                    //             '<td>'+acesso.cpf+'</td>'+
-                    //             '<td>'+acesso.email+'</td>'+
-                    //             '<td><a target="_blank" href="access_activity.html?userid='+acesso.id+'&courseid='+courseid+'&date_initial='+$('#date_initial').val()+'&date_final='+$('#date_final').val()+'">'+acesso.nome+'</a></td>'+
-                    //             '<td>'+acesso.grupo+'</td>'+
-                    //             '<td>'+acesso.forum_feito+'/'+acesso.forum+'</td>'+
-                    //             '<td>'+acesso.atividade_feita+'/'+acesso.atividades+'</td>'+
-                    //             '<td>'+acesso.questionario_feito+'/'+acesso.questionario+'</td>'+
-                    //             '<td>'+acesso.ultimoacesso+'</td>'+
+                    //             '<td>'+item.nome+'</td>'+
+                    //             '<td>'+grupo+'</td>'+
+                    //             '<td>'+item.total+'</td>'+
+                    //             '<td>'+item.qtd_feed+'</td>'
                     //         '</tr>';
                     dados.push({
-                        'CPF': acesso.cpf,
-                        'E-mail': acesso.email,
-                        'Nome': '<a target="_blank" href="/admin/reports/accessactivity/?userid='+acesso.id+'&courseid='+courseid+'&date_initial='+$('#date_initial').val()+'&date_final='+$('#date_final').val()+'">'+acesso.nome+'</a>',
-                        'Polo': acesso.grupo,
-                        'Fórum': acesso.forum_feito+' / '+acesso.forum,
-                        'Atividades': acesso.atividade_feita+' / '+acesso.atividades,
-                        'Questionário': acesso.questionario_feito+' / '+acesso.questionario,
-                        'Último Acesso': acesso.ultimoacesso
+                        'Nome': item.nome,
+                        'Polo': grupo,
+                        'Participações': item.total,
+                        'Feedbacks': item.qtd_feed,
                     });
                 });
-
-
-                // var table = $('#access_course').DataTable();
-
-                if ( $.fn.dataTable.isDataTable( '#access_course' ) ) {
-
-                    table.destroy();
-                }
-                table = $('#access_course').DataTable( {
+                // html += '';
+                // if(html == ''){
+                //     html += '<tr>'+
+                //             '<td colspan="4">Nenhum registro encontrado!</td>'+
+                //             '</tr>';
+                // }
+                // $('#assign_course tbody').html('<tr><td colspan="4"></td></tr>');
+                // $("#tabela_id").html(html);
+                table = $('#forum_course').DataTable({
                     paging: true,
                     data: dados,
                     columns: [
-                        {data: 'CPF' },
-                        {data: 'E-mail' },
                         {data: 'Nome' },
                         {data: 'Polo' },
-                        {data: 'Fórum' },
-                        {data: 'Atividades' },
-                        {data: 'Questionário' },
-                        {data: 'Último Acesso' }
+                        {data: 'Participações' },
+                        {data: 'Feedbacks' }
                     ],
                     dom: "Blfrtip",
                     buttons: [
-                        {
-                            extend: "copy",
-                            className: "btn-sm"
-                        },
-                        {
-                            extend: "csv",
-                            className: "btn-sm"
-                        },
-                        {
-                            extend: "excel",
-                            className: "btn-sm"
-                        },
-                        // {
-                        //   extend: "pdfHtml5",
-                        //   className: "btn-sm"
-                        // },
-                        // {
-                        //   extend: "print",
-                        //   className: "btn-sm"
-                        // }
+                        $.extend( true, {}, buttonCommon, {
+                            extend: 'copyHtml5'
+                        } ),
+                        $.extend( true, {}, buttonCommon, {
+                            extend: 'excelHtml5'
+                        } ),
+                        $.extend( true, {}, buttonCommon, {
+                            extend: 'pdfHtml5'
+                        } )
                     ],
-                    // buttons: [
-                    //     $.extend( true, {}, buttonCommon, {
-                    //         extend: 'copyHtml5'
-                    //     } ),
-                    //     $.extend( true, {}, buttonCommon, {
-                    //         extend: 'excelHtml5'
-                    //     } ),
-                    //     $.extend( true, {}, buttonCommon, {
-                    //         extend: 'pdfHtml5'
-                    //     } )
-                    // ],
                     responsive: true
                 } );
                 $('.loading_icon').hide();
-
             }
         });
+
 
     }
 

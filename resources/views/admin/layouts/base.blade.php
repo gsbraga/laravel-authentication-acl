@@ -15,8 +15,10 @@
     {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/baselayout.css') !!}
     {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/fonts.css') !!}
     {!! HTML::style('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css') !!}
+{{--    {!! HTML::style('packages/gentelella/build/css/custom.min.css') !!}--}}
 
-    @yield('head_css')
+
+@yield('head_css')
     {{-- End head css --}}
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->

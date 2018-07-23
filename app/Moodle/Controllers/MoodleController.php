@@ -67,15 +67,15 @@ class MoodleController extends Controller
     function getCoursesList(Request $request)
     {
         $id = $request->get('id');
-        $category_id = $request->get('category_id');
+        $category_id = $request->get('curso');
         if($category_id != null){
-            $category = Courses::find($id);
+            $curso_info = Courses::find($id);
 
         }else{
-            $category = null;
+            $curso_info = null;
         }
 
-        return \view('laravel-authentication-acl::admin.course.courses-list', compact('category'));
+        return \view('laravel-authentication-acl::admin.course.courses-list', compact('curso_info'));
     }
 
     function getMoodleDashboard(Request $request)
@@ -117,12 +117,72 @@ class MoodleController extends Controller
 
     function getMoodleAccessCourses(Request $request)
     {
+        $curso_id = $request->get('curso');
+        if($curso_id != null){
+            $curso_info = Courses::where('category_id', '=', $curso_id)->first();
+
+        }
+
         $moodle_id = $request->get('id');
         if($moodle_id != null){
             $moodle = Moodles::find($moodle_id);
         }
 
-        return \view('laravel-authentication-acl::moodle.courses-access', compact('moodle'));
+        return \view('laravel-authentication-acl::moodle.courses-access', compact('moodle', 'curso_info'));
+    }
+
+    function getMoodleAccessActivity(Request $request)
+    {
+//        $moodle_id = $request->get('id');
+//        if($moodle_id != null){
+//            $moodle = Moodles::find($moodle_id);
+//        }
+
+        return \view('laravel-authentication-acl::moodle.access-activity');
+    }
+
+    function getMoodleReportActivity(Request $request)
+    {
+        $curso_id = $request->get('curso');
+        if($curso_id != null){
+            $curso_info = Courses::where('category_id', '=', $curso_id)->first();
+
+        }
+
+        return \view('laravel-authentication-acl::moodle.report-activity', compact('curso_info'));
+    }
+
+    function getMoodleReportForum(Request $request)
+    {
+        $curso_id = $request->get('curso');
+        if($curso_id != null){
+            $curso_info = Courses::where('category_id', '=', $curso_id)->first();
+
+        }
+
+        return \view('laravel-authentication-acl::moodle.report-forum', compact('curso_info'));
+    }
+
+    function getMoodleReportQuiz(Request $request)
+    {
+        $curso_id = $request->get('curso');
+        if($curso_id != null){
+            $curso_info = Courses::where('category_id', '=', $curso_id)->first();
+
+        }
+
+        return \view('laravel-authentication-acl::moodle.report-quiz', compact('curso_info'));
+    }
+
+    function getMoodleReportCourse(Request $request)
+    {
+        $curso_id = $request->get('curso');
+        if($curso_id != null){
+            $curso_info = Courses::where('category_id', '=', $curso_id)->first();
+
+        }
+
+        return \view('laravel-authentication-acl::moodle.report-course', compact('curso_info'));
     }
 
 }

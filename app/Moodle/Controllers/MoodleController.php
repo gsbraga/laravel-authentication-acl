@@ -53,6 +53,7 @@ class MoodleController extends Controller
         $moodle = $this->model->find($moodle_id);
         $courses = [];
         if($moodle_id != null){
+            session(['moodle_id' => $moodle_id]);
             $courses = Courses::where('moodle_id', '=', $moodle_id)->get();
 
         }
@@ -72,7 +73,7 @@ class MoodleController extends Controller
             $curso_info = Courses::find($id);
 
         }else{
-            $curso_info = null;
+            return redirect('/');
         }
 
         return \view('laravel-authentication-acl::admin.course.courses-list', compact('curso_info'));
@@ -94,13 +95,13 @@ class MoodleController extends Controller
 
     function getMoodleAccess(Request $request)
     {
-        $sidebar_items = [
-            'Relatórios' => array('1', '2')
-        ];
+
         $moodle_id = $request->get('id');
-        if($moodle_id != null){
-            $moodle = Moodles::find($moodle_id);
+
+        if($moodle_id == null){
+            $moodle_id = session('moodle_id');
         }
+        $moodle = Moodles::find($moodle_id);
 
         return \view('laravel-authentication-acl::moodle.dashboard-access', compact('moodle'));
     }

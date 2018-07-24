@@ -67,15 +67,15 @@ return [
             [
                 "name"        => "Reports",
                 "route"       => "reports",
-                "link"        => '/admin/reports/list',
-                "permissions" => ["_superadmin", "_course-editor"]
+                "link"        => '/admin/reports/access',
+                "permissions" => ["_superadmin", "_report-editor"]
             ],
 
             [
-                    "name"        => "Permission",
-                    "route"       => "permission",
-                    "link"        => '/admin/permissions/list',
-                    "permissions" => ["_superadmin", "_permission-editor"]
+                "name"        => "Permission",
+                "route"       => "permission",
+                "link"        => '/admin/permissions/list',
+                "permissions" => ["_superadmin", "_permission-editor"]
             ],
             [
                 /*

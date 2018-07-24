@@ -253,24 +253,24 @@ Route::group(['middleware' => ['web']], function ()
          * reports
          */
 
-        Route::get('admin/reports/courses', [
-            "as"   => "courses.moodle",
+        Route::get('admin/reports/list', [
+            "as"   => "reports.moodle",
             "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getCoursesList'
         ]);
 
 
         Route::get('admin/reports/access', [
-            "as"   => "moodle.access",
+            "as"   => "reports.access",
             "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleAccess'
         ]);
 
         Route::get('admin/reports/useraccess', [
-            "as"   => "moodle.usersaccess",
+            "as"   => "reports.usersaccess",
             "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleUserAccess'
         ]);
 
         Route::get('admin/reports/accesscourses', [
-            "as"   => "moodle.accesscourses",
+            "as"   => "reports.accesscourses",
             "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleAccessCourses'
         ]);
 
@@ -280,22 +280,22 @@ Route::group(['middleware' => ['web']], function ()
         ]);
 
         Route::get('admin/reports/reportactivity', [
-            "as"   => "moodle.reportactvity",
+            "as"   => "reports.reportactvity",
             "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleReportActivity'
         ]);
 
         Route::get('admin/reports/reportforum', [
-            "as"   => "moodle.reportforum",
+            "as"   => "reports.reportforum",
             "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleReportForum'
         ]);
 
         Route::get('admin/reports/reportquiz', [
-            "as"   => "moodle.reportquiz",
+            "as"   => "reports.reportquiz",
             "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleReportQuiz'
         ]);
 
         Route::get('admin/reports/reportcourse', [
-            "as"   => "moodle.reportcourse",
+            "as"   => "reports.reportcourse",
             "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleReportCourse'
         ]);
 

@@ -47,7 +47,7 @@
             </div>
 
                 <div class="row">
-                    <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4">
+                    <div class="col-md-3 col-sm-12 col-xs-12 col-lg-3">
                         <div class="x_panel">
                             <div class="x_title">
                                 <h2>Informe os dados da pesquisa:</h2>
@@ -109,15 +109,7 @@
                                       </div>
                                     </div> -->
 
-                                    <div class="form-group loading_icon" style="display: none;">
-                                        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4"></div>
 
-                                        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
-                                            <img src="/images/load.gif" width="90" alt="">
-                                        </div>
-
-                                        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4"></div>
-                                    </div>
 
                                 </form>
                             </div>
@@ -126,7 +118,7 @@
 
 
                     <!-- bar chart -->
-                    <div class="col-md-8 col-sm-12 col-xs-12 col-lg-8">
+                    <div class="col-md-9 col-sm-12 col-xs-12 col-lg-9">
                         <div class="x_panel">
                             <div class="x_title">
                                 {{--<h2>Acesso por dia</h2>--}}
@@ -150,6 +142,15 @@
                             <!-- <div class="x_content">
                               <div id="graph_bar" style="width:100%; height:280px;"></div>
                             </div> -->
+                            <div class="form-group loading_icon" style="display: none;">
+                                <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4"></div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+                                    <img src="/images/load.gif" width="90" alt="">
+                                </div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4"></div>
+                            </div>
                             <div class="x_content">
 
                                 <div id="echart_line" style="height:350px;"></div>
@@ -227,7 +228,9 @@
 
     /* CHART - MORRIS  */
 
-    var qtd_dias_online = function(){
+    var qtd_dias_online2222 = function(){
+        $('.loading_icon').show();
+
 
         var categoryid = $('#categoryid').val();
         var courseid = $('#courseid').val();
@@ -256,6 +259,8 @@
                 console.log(aux);
                 $('#graph_bar').html('');
                 init_morris_charts2(aux);
+                $('.loading_icon').hide();
+
             }
         });
     }
@@ -371,6 +376,7 @@
     perfis_modulo();
 
     var qtd_dias_online = function(){
+        $('.loading_icon').show();
 
         var categoryid = $('#categoryid').val();
         var courseid = $('#courseid').val();
@@ -450,6 +456,8 @@
                 window.location.href = '#chart-view';
                 console.log(dados);
                 init_echarts(dados);
+                $('.loading_icon').hide();
+
             }
         });
 

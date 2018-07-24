@@ -40,8 +40,8 @@ Admin login
                             </div>
                         </div>
                     </div>
-                    {!! Form::label('remember','Remember me') !!}
-                    {!! Form::checkbox('remember') !!}
+                    {{--{!! Form::label('remember','Remember me') !!}--}}
+                    {{--{!! Form::checkbox('remember') !!}--}}
                     <input type="submit" value="Login" class="btn btn-info btn-block">
                     {!! Form::close() !!}
                     <div class="row">

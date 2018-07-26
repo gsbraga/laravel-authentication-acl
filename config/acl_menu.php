@@ -13,7 +13,7 @@ return [
             [
                     "name"        => "Dashboard",
                     "route"       => "dashboard",
-                    "link"        => '/',
+                    "link"        => '/dashboards',
 //                    "link"        => '/admin/users/dashboard',
                     "permissions" => []
             ],
@@ -51,28 +51,28 @@ return [
                 "skip_permissions" => ["users.selfprofile.edit", "users.profile.edit", "users.profile.addfield", "users.profile.deletefield"]
             ],
             [
-                "name"        => "Groups",
+                "name"        => "Grupos",
                 "route"       => "groups",
                 "link"        => '/admin/groups/list',
                 "permissions" => ["_superadmin", "_group-editor"]
             ],
 
             [
-                "name"        => "Courses",
+                "name"        => "Cursos",
                 "route"       => "courses",
                 "link"        => '/admin/courses/list',
                 "permissions" => ["_superadmin", "_course-editor"]
             ],
 
             [
-                "name"        => "Reports",
+                "name"        => "Relatórios",
                 "route"       => "reports",
-                "link"        => '/admin/reports/access',
+                "link"        => '/dashboards/categories',
                 "permissions" => ["_superadmin", "_report-editor"]
             ],
 
             [
-                "name"        => "Permission",
+                "name"        => "Permissão",
                 "route"       => "permission",
                 "link"        => '/admin/permissions/list',
                 "permissions" => ["_superadmin", "_permission-editor"]

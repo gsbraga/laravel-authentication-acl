@@ -1,4 +1,4 @@
-@extends('laravel-authentication-acl::admin.layouts.base-2cols')
+@extends('laravel-authentication-acl::admin.layouts.base-1cols')
 @extends('laravel-authentication-acl::moodle.layouts.defaultmoodle')
 
 @section('title')
@@ -40,11 +40,6 @@
             <h3 class="panel-title bariol-thin"><i class="fa fa-bar-chart-o"></i> Acessos</h3>
         </div>
         <div class="panel-body">
-            <div class="row">
-                <div class="col-md-3 col-sm-4 col-xs-6 col-lg-3 form-group">
-                    <a href="/categories/?id={{ $moodle->id }}" class="red"><h4>Acessar Cursos <i class="fa fa-share"></i></h4></a>
-                </div>
-            </div>
 
                 <div class="row">
                     <div class="col-md-3 col-sm-12 col-xs-12 col-lg-3">

@@ -15,20 +15,6 @@ use Illuminate\Session\TokenMismatchException;
 Route::group(['middleware' => ['web']], function ()
 {
 
-    //Dashboard dos AVAs
-    Route::get('/', [
-        "as"   => "dashboard.moodle",
-        "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getList'
-    ]);
-
-    //Dashboard dos Cursos
-    Route::get('/categories', [
-        "as"   => "categories.list",
-        "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getCategoriesList'
-    ]);
-
-
-
     Route::get('/admin/login', [
             "as"   => "user.admin.login",
             "uses" => 'LaravelAcl\Authentication\Controllers\AuthController@getAdminLogin'
@@ -125,6 +111,27 @@ Route::group(['middleware' => ['web']], function ()
         Route::get('/admin/users/dashboard', [
                 'as'   => 'dashboard.default',
                 'uses' => 'LaravelAcl\Authentication\Controllers\DashboardController@base'
+        ]);
+
+        Route::get('/dashboards', [
+            "as"   => "dashboard.moodle",
+            "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getListDashboards'
+        ]);
+
+        Route::get('/dashboards/moodles', [
+            "as"   => "dashboard.moodles",
+            "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getList'
+        ]);
+
+        Route::get('/dashboards/access', [
+            "as"   => "dashboard.access",
+            "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleAccess'
+        ]);
+
+        //Dashboard dos Cursos
+        Route::get('/dashboards/categories', [
+            "as"   => "dashboard.list",
+            "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getCategoriesList'
         ]);
 
         /**
@@ -259,10 +266,6 @@ Route::group(['middleware' => ['web']], function ()
         ]);
 
 
-        Route::get('admin/reports/access', [
-            "as"   => "reports.access",
-            "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleAccess'
-        ]);
 
         Route::get('admin/reports/useraccess', [
             "as"   => "reports.usersaccess",

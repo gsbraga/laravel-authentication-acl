@@ -160,3 +160,30 @@ img {
 .scroll-auto{
     overflow: auto;
 }
+
+.img_curso{
+    font-family: serif;
+    border-radius: 10px;
+    border-left-style: solid;
+    border-style: double;
+    font-size: 3em;
+    border-color: #000;
+    width: 65px;
+    height: 60px;
+}
+.img_curso_1 {
+    color: #378457;
+}
+.img_curso_2 {
+    color: #375584;
+}
+.img_curso_1 {
+    color: #804054;
+}
+.img_curso_1 {
+    color: #359e9b;
+}
+
+.card-dashboard>a>img{
+    width: 100%;
+}

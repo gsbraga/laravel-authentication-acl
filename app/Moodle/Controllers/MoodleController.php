@@ -47,11 +47,20 @@ class MoodleController extends Controller
         return \view('laravel-authentication-acl::moodle.list', compact('moodles'));
     }
 
+    public function getListDashboards()
+    {
+        return \view('laravel-authentication-acl::moodle.dashboards-list', compact('moodles'));
+    }
+
     function getCategoriesList(Request $request)
     {
         $moodle_id = $request->get('id');
+        if($moodle_id == null){
+            $moodle_id = session('moodle_id');
+        }
         $moodle = $this->model->find($moodle_id);
         $courses = [];
+
         if($moodle_id != null){
             session(['moodle_id' => $moodle_id]);
             $courses = Courses::where('moodle_id', '=', $moodle_id)->get();
@@ -62,7 +71,7 @@ class MoodleController extends Controller
 //            $courses = json_decode(file_get_contents($url));
 
 
-        return \view('laravel-authentication-acl::moodle.categories-list', compact('courses'));
+        return \view('laravel-authentication-acl::moodle.categories-list', compact('courses', 'moodle'));
     }
 
     function getCoursesList(Request $request)

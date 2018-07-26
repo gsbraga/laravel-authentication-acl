@@ -11,7 +11,7 @@ return [
   |
   */
 
-  "app_name" => "Authenticator",
+  "app_name" => "Acompanhamento NEAD",
 
   /*
   |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ return [
   | The user/login redirection url
   |
   */
-  "user_login_redirect_url" => "/",
+  "user_login_redirect_url" => "/dashboards/moodles",
 
     /*
   |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
   | The admin login redirection url
   |
   */
-   "admin_login_redirect_url" => "/",
+   "admin_login_redirect_url" => "/dashboards/moodles",
 //   "admin_login_redirect_url" => "/admin/users/dashboard",
 
   /*

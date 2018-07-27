@@ -28,11 +28,11 @@
                     </a>
                     <ul class="dropdown-menu">
                             <li>
-                                <a href="{!! URL::route('users.selfprofile.edit') !!}"><i class="fa fa-user"></i> Your profile</a>
+                                <a href="{!! URL::route('users.selfprofile.edit') !!}"><i class="fa fa-user"></i> Seu perfil</a>
                             </li>
                             <li class="divider"></li>
                         <li>
-                            <a href="{!! URL::route('user.logout') !!}"><i class="fa fa-sign-out"></i> Logout</a>
+                            <a href="{!! URL::route('user.logout') !!}"><i class="fa fa-sign-out"></i> Sair</a>
                         </li>
                     </ul>
                 </li>

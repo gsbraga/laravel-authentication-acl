@@ -135,6 +135,7 @@ img {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
+    cursor: auto;
 }
 
 .img-course{
@@ -186,4 +187,8 @@ img {
 
 .card-dashboard>a>img{
     width: 100%;
+}
+
+.scroll-auto {
+    overflow: auto;
 }

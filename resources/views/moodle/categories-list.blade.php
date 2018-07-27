@@ -27,7 +27,7 @@
                 {{--</div>--}}
             {{--</div>--}}
 
-            <div class="col-md-4 col-sm-6 col-xs-12 col-lg-3 box-course">
+            <div class="col-md-4 col-sm-6 col-xs-6 col-lg-4 box-course">
                 <div class="card-body-course">
                     <div class="card-title-course"><div class="course-list">
                             {{--<img src="/packages/jacopo/laravel-authentication-acl/images/cursos/{{ $course->image  }}" alt="Curso online jQuery: Avance na biblioteca mais popular do mercado parte 2" aria-hidden="true" class="img-course">--}}

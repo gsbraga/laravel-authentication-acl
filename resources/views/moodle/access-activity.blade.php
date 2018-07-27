@@ -16,37 +16,18 @@
     {!! HTML::style('packages/gentelella/vendors/nprogress/nprogress.css') !!}
     <!-- iCheck -->
     {{--<link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">--}}
-    {!! HTML::style('packages/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css') !!}
+    {{--{!! HTML::style('packages/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css') !!}--}}
+    {!! HTML::style('packages/gentelella/build/css/custom.min.css') !!}
+
 
 
 @section('content')
 
     <div class="panel panel-info">
         <div class="panel-heading">
-            <h2 class="panel-title bariol-thin"><i class="fa fa-bar-chart-o"></i> Acesso dos usuários </h2>
+            <h2 class="panel-title bariol-thin"><i class="fa fa-bar-chart-o"></i> Acesso do aluno </h2>
         </div>
         <div class="panel-body">
-
-            <div class="row info_modulo" style="display: none;">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <label class="control-label col-md-2 col-sm-2 col-xs-2" for="first-name">Disciplina: </label>
-                    <span id="nome_disciplina" class="col-md-10 col-sm-10 col-xs-10"></span>
-                </div>
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <label class="control-label col-md-2 col-sm-2 col-xs-2" for="first-name">Início: </label>
-                    <span id="inicio_disciplina" class="col-md-10 col-sm-10 col-xs-10"></span>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-6">
-                    <label class="control-label col-md-6 col-sm-6 col-xs-6" for="first-name">Status: </label>
-                    <span id="status_disciplina" class="col-md-3 col-sm-3 col-xs-3"></span>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-6">
-                    <label class="control-label col-md-6 col-sm-6 col-xs-6" for="first-name">Alunos: </label>
-                    <span id="alunos_disciplina" class="col-md-3 col-sm-3 col-xs-3"></span>
-                </div>
-            </div>
-            <hr/>
-
 
             <div class="row">
                 <div class="page-title">
@@ -69,7 +50,6 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-6">
-                    <hr/>
                     <div class="title_left">
                         <span class="red">Aluno(a):</span>
                         <h4 class="name_user warn"></h4>
@@ -87,7 +67,7 @@
             <div class="row top_tiles">
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
-                        <div class="icon"><i class="fa fa-check-square-o"></i></div>
+                        <div class="icon"><i style="padding-top: 10px !important;" class="fa fa-check-square-o"></i></div>
                         <div class="count count_atividade">0</div>
                         <h3>Atividades</h3>
                         <p>Atividades submetidas.</p>
@@ -95,7 +75,7 @@
                 </div>
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
-                        <div class="icon"><i class="fa fa-question"></i></div>
+                        <div class="icon"><i style="padding-top: 10px !important;" class="fa fa-question"></i></div>
                         <div class="count count_questionario">0</div>
                         <h3>Questionários</h3>
                         <p>Submissões de questionários.</p>
@@ -103,7 +83,7 @@
                 </div>
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
-                        <div class="icon"><i class="fa fa-comments-o"></i></div>
+                        <div class="icon"><i style="padding-top: 10px !important;" class="fa fa-comments-o"></i></div>
                         <div class="count count_forum">0</div>
                         <h3>Fórum</h3>
                         <p>Participação em fóruns.</p>
@@ -111,7 +91,7 @@
                 </div>
                 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="tile-stats">
-                        <div class="icon"><i class="fa fa-desktop"></i></div>
+                        <div class="icon"><i style="padding-top: 10px !important;" class="fa fa-desktop"></i></div>
                         <div class="count count_acesso">0</div>
                         <h3>Acesso</h3>
                         <p>Ultimo acesso a disciplina.</p>
@@ -645,11 +625,11 @@
         $.get( URL_API + "?type=info_user&userid="+userid+"&courseid="+courseid, function( data ) {
 
             $.each(data, function(index, item){
-                if(item.img_user == ''){
-                    img_user = '<img src="images/user.png"/>';
-                }else{
-                    img_user = '<img src="'+aux_info.url + '/' + item.img_user+'">';
-                }
+                // if(item.img_user == ''){
+                //     img_user = '<img src="images/user.png"/>';
+                // }else{
+                //     img_user = '<img src="'+aux_info.url + '/' + item.img_user+'">';
+                // }
                 $('.name_user').html(item.firstname +' '+ item.lastname);
                 $('.email_user').html(item.email + ', Turma: ' + item.grupo);
                 $('.ultimo_acesso').html('Ultimo acesso: ' + item.ultimo_acesso);

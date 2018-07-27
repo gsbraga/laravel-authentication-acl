@@ -55,9 +55,10 @@ class MoodleController extends Controller
     function getCategoriesList(Request $request)
     {
         $moodle_id = $request->get('id');
-        if($moodle_id == null){
+        if($moodle_id == null && session('moodle_id') != null){
             $moodle_id = session('moodle_id');
         }
+
         $moodle = $this->model->find($moodle_id);
         $courses = [];
 

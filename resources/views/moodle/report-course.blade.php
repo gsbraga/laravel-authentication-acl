@@ -38,7 +38,7 @@
 
     <!-- Custom Theme Style -->
     {{--<link href="../build/css/custom.min.css" rel="stylesheet">--}}
-    {{--{!! HTML::style('packages/gentelella/build/css/custom.min.css') !!}--}}
+    {!! HTML::style('packages/gentelella/build/css/custom.min.css') !!}
 
 @section('content')
 

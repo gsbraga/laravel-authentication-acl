@@ -278,7 +278,7 @@ Route::group(['middleware' => ['web']], function ()
         ]);
 
         Route::get('admin/reports/accessactivity', [
-            "as"   => "moodle.accessactvity",
+            "as"   => "reports.accessactvity",
             "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleAccessActivity'
         ]);
 

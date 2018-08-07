@@ -44,4 +44,5 @@ class Courses extends Model
 
         return $dados;
     }
+
 }

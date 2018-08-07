@@ -1,5 +1,5 @@
 @extends('laravel-authentication-acl::admin.layouts.base-2cols')
-@extends('laravel-authentication-acl::moodle.layouts.defaultmoodle')
+{{--@extends('laravel-authentication-acl::moodle.layouts.defaultmoodle')--}}
 
 @section('title')
     Ambientes: Dashboards
@@ -14,7 +14,7 @@
 
         <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
             <div class="card-dashboard">
-                <div class="card-title "><a style="color: #000;" href="/admin/reports/access/"><h2>Acesso por dia</h2></a></div>
+                <div class="card-title "><a style="color: #000;" href="/dashboards/access/"><h2>Acesso por dia</h2></a></div>
                 {{--<div class="card-container">--}}
                     {{--<p>{{ $moodle->description }}</p>--}}
                 {{--</div>--}}
@@ -28,7 +28,7 @@
 
         <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
             <div class="card-dashboard">
-                <div class="card-title "><a style="color: #000;" href="/admin/reports/access/"><h2>Usuários online</h2></a></div>
+                <div class="card-title "><a style="color: #000;" href="/dashboards/moodles"><h2>Usuários online</h2></a></div>
                 {{--<div class="card-container">--}}
                 {{--<p>{{ $moodle->description }}</p>--}}
                 {{--</div>--}}

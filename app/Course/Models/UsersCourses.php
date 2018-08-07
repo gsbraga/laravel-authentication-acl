@@ -17,4 +17,18 @@ class UsersCourses extends Model
 
     protected $fillable = ["id", "course_id", "moodle_id", "user_id"];
 
+
+    public function cursos($user_id){
+        $dados = DB::select("
+            SELECT
+             courses.*
+            FROM
+              courses
+            INNER JOIN users_courses ON courses.id = users_courses.course_id
+            WHERE users_courses.user_id = $user_id
+            ");
+
+        return $dados;
+    }
+
 }

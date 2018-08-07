@@ -1,12 +1,12 @@
-@extends('laravel-authentication-acl::admin.layouts.base-2cols')
+{{--@extends('laravel-authentication-acl::admin.layouts.base-2cols')--}}
 @extends('laravel-authentication-acl::moodle.layouts.defaultmoodle')
 
 @section('title')
     Ambientes: Dashboard
 @stop
 
-@section('content')
-    {{--<h2><img width="200px" src="/packages/jacopo/laravel-authentication-acl/images/logo.jpeg"></h2>--}}
+@section('container')
+    <h2><img width="200px" src="/packages/jacopo/laravel-authentication-acl/images/logo.jpeg"></h2>
     <h4>Ambientes Virtuais do NEAD - UFMA:</h4>
     <hr/>
 

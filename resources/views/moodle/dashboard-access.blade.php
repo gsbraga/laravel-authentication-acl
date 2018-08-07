@@ -1,5 +1,5 @@
 @extends('laravel-authentication-acl::admin.layouts.base-1cols')
-@extends('laravel-authentication-acl::moodle.layouts.defaultmoodle')
+{{--@extends('laravel-authentication-acl::moodle.layouts.defaultmoodle')--}}
 
 @section('title')
     Disciplinas

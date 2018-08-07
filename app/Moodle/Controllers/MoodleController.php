@@ -10,6 +10,8 @@ namespace LaravelAcl\Moodle\Controllers;
 
 
 use Illuminate\Support\Facades\DB;
+use LaravelAcl\Authentication\Interfaces\AuthenticateInterface;
+use LaravelAcl\Course\Models\UsersCourses;
 use LaravelAcl\Moodle\Models\Moodles;
 use LaravelAcl\Course\Models\Courses;
 
@@ -52,11 +54,14 @@ class MoodleController extends Controller
         return \view('laravel-authentication-acl::moodle.dashboards-list', compact('moodles'));
     }
 
-    function getCategoriesList(Request $request)
+    function getCategoriesList(Request $request, AuthenticateInterface $auth)
     {
+        $user = $auth->getLoggedUser();
         $moodle_id = $request->get('id');
         if($moodle_id == null && session('moodle_id') != null){
             $moodle_id = session('moodle_id');
+        }else if($moodle_id == null && session('moodle_id') == null){
+            return redirect('/dashboards/moodles');
         }
 
         $moodle = $this->model->find($moodle_id);
@@ -64,7 +69,12 @@ class MoodleController extends Controller
 
         if($moodle_id != null){
             session(['moodle_id' => $moodle_id]);
-            $courses = Courses::where('moodle_id', '=', $moodle_id)->get();
+//            $courses = Courses::where('moodle_id', '=', $moodle_id)->get();
+            $teste = new UsersCourses();
+            $courses = $teste->cursos($user->id);
+//            foreach ($courses2 as $value)
+//                echo $value->id;
+//                ->where('moodle_id', '=', $moodle_id)->where('user_id', '=', $user->id)->get();
 
         }
 //            $url = $moodle->url . "/api-monit/funcoes_api.php?type=cursos_moodle";
@@ -118,12 +128,18 @@ class MoodleController extends Controller
 
     function getMoodleUserAccess(Request $request)
     {
+        $curso_id = $request->get('curso');
+        if($curso_id != null){
+            $curso_info = Courses::where('category_id', '=', $curso_id)->first();
+
+        }
+
         $moodle_id = $request->get('id');
         if($moodle_id != null){
             $moodle = Moodles::find($moodle_id);
         }
 
-        return \view('laravel-authentication-acl::moodle.user-access', compact('moodle'));
+        return \view('laravel-authentication-acl::moodle.user-access', compact('moodle', '      curso_info'));
     }
 
     function getMoodleAccessCourses(Request $request)

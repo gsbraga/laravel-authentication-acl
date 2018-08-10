@@ -7,7 +7,10 @@ use Illuminate\Session\TokenMismatchException;
   |--------------------------------------------------------------------------
   |
 */
-
+Route::get('/', [
+    "as"   => "dashboard.moodles",
+    "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getList'
+]);
 
 /**
  * User login and logout

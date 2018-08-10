@@ -68,3 +68,14 @@
 
 
 @stop
+
+@section('footer_scripts')
+    {!! HTML::script('packages/gentelella/build/js/config.js') !!}
+
+    <script type="text/javascript">
+    var ambiente = parseInt(getUrlParameters("id", "", true));
+        ambiente--;
+    localStorage.setItem('ambiente', ambiente);
+
+    </script>
+@stop

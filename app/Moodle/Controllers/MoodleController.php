@@ -65,16 +65,13 @@ class MoodleController extends Controller
         }
 
         $moodle = $this->model->find($moodle_id);
+
         $courses = [];
 
         if($moodle_id != null){
             session(['moodle_id' => $moodle_id]);
-//            $courses = Courses::where('moodle_id', '=', $moodle_id)->get();
-            $teste = new UsersCourses();
-            $courses = $teste->cursos($user->id);
-//            foreach ($courses2 as $value)
-//                echo $value->id;
-//                ->where('moodle_id', '=', $moodle_id)->where('user_id', '=', $user->id)->get();
+            $course = new UsersCourses();
+            $courses = $course->cursos($user->id, $moodle_id);
 
         }
 //            $url = $moodle->url . "/api-monit/funcoes_api.php?type=cursos_moodle";
@@ -146,7 +143,7 @@ class MoodleController extends Controller
     {
         $curso_id = $request->get('curso');
         if($curso_id != null){
-            $curso_info = Courses::where('category_id', '=', $curso_id)->first();
+            $curso_info = Courses::where('category_id', '=', $curso_id)->where('moodle_id','=', session('moodle_id'))->first();
 
         }
 
@@ -172,7 +169,7 @@ class MoodleController extends Controller
     {
         $curso_id = $request->get('curso');
         if($curso_id != null){
-            $curso_info = Courses::where('category_id', '=', $curso_id)->first();
+            $curso_info = Courses::where('category_id', '=', $curso_id)->where('moodle_id','=', session('moodle_id'))->first();
 
         }
 
@@ -183,7 +180,7 @@ class MoodleController extends Controller
     {
         $curso_id = $request->get('curso');
         if($curso_id != null){
-            $curso_info = Courses::where('category_id', '=', $curso_id)->first();
+            $curso_info = Courses::where('category_id', '=', $curso_id)->where('moodle_id','=', session('moodle_id'))->first();
 
         }
 
@@ -194,7 +191,7 @@ class MoodleController extends Controller
     {
         $curso_id = $request->get('curso');
         if($curso_id != null){
-            $curso_info = Courses::where('category_id', '=', $curso_id)->first();
+            $curso_info = Courses::where('category_id', '=', $curso_id)->where('moodle_id','=', session('moodle_id'))->first();
 
         }
 
@@ -205,7 +202,7 @@ class MoodleController extends Controller
     {
         $curso_id = $request->get('curso');
         if($curso_id != null){
-            $curso_info = Courses::where('category_id', '=', $curso_id)->first();
+            $curso_info = Courses::where('category_id', '=', $curso_id)->where('moodle_id','=', session('moodle_id'))->first();
 
         }
 

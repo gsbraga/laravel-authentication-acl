@@ -49,12 +49,12 @@
 
                             <div class="clearfix"></div>
                         </div>
-                        <div class="x_content">
+                        <div class="x_content" style="overflow:auto;">
                             <p class="text-muted font-13 m-b-30">
                                 Este listagem mostra todos as disciplinas que estão cadastradas no Curso.
                             </p>
 
-                            <table id="courses" class="table table-striped table-bordered">
+                            <table id="courses" class="table table-striped table-bordered" style="width: 100%">
                                 <thead>
                                 <tr>
                                     {{--<th>ID</th>--}}

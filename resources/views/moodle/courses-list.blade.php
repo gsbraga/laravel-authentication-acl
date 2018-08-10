@@ -49,7 +49,7 @@
 
                             <div class="clearfix"></div>
                         </div>
-                        <div class="x_content">
+                        <div class="x_content" style="overflow:auto;">
                             <p class="text-muted font-13 m-b-30">
                                 Este listagem mostra todos as disciplinas que estão cadastradas no Curso.
                             </p>
@@ -68,7 +68,7 @@
                                 </thead>
                                 <tbody id="tabela_id">
                                 <tr>
-                                    <td colspan="7">Nenhum registro encontrado!</td>
+                                    <td colspan="6">Nenhum registro encontrado!</td>
                                 </tr>
                                 </tbody>
                             </table>

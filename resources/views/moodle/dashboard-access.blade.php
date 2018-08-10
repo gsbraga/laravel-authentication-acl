@@ -168,10 +168,10 @@
 
 <!-- jQuery -->
 {{--<script src="../vendors/jquery/dist/jquery.min.js"></script>--}}
-{!! HTML::script('packages/gentelella/vendors/jquery/dist/jquery.min.js') !!}
+{{--{!! HTML::script('packages/gentelella/vendors/jquery/dist/jquery.min.js') !!}--}}
 <!-- Bootstrap -->
 {{--<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>--}}
-{!! HTML::script('packages/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js') !!}
+{{--{!! HTML::script('packages/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js') !!}--}}
 <!-- FastClick -->
 {{--<script src="../vendors/fastclick/lib/fastclick.js"></script>--}}
 {!! HTML::script('packages/gentelella/vendors/fastclick/lib/fastclick.js') !!}

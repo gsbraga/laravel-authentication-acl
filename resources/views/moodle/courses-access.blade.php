@@ -149,7 +149,7 @@
 
                             <div class="clearfix"></div>
                         </div>
-                        <div class="x_content">
+                        <div class="x_content" style="overflow:auto;">
                             <p class="text-muted font-13 m-b-30 period-descritption-show" style="display: none;">
 
                             </p>

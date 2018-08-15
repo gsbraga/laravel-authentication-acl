@@ -110,7 +110,7 @@ class MoodleController extends Controller
         return \view('laravel-authentication-acl::moodle.dashboard', compact('chart'));
     }
 
-    function getMoodleAccess(Request $request)
+    function getMoodleAccess(Request $request, AuthenticateInterface $auth)
     {
 
         $moodle_id = $request->get('id');
@@ -120,10 +120,16 @@ class MoodleController extends Controller
         }
         $moodle = Moodles::find($moodle_id);
 
-        return \view('laravel-authentication-acl::moodle.dashboard-access', compact('moodle'));
+        $user = $auth->getLoggedUser();
+
+        $course = new UsersCourses();
+        $courses = $course->cursos($user->id, $moodle_id);
+
+
+        return \view('laravel-authentication-acl::moodle.dashboard-access', compact('moodle', 'courses'));
     }
 
-    function getMoodleUserAccess(Request $request)
+    function getMoodleUserAccess(Request $request, AuthenticateInterface $auth)
     {
         $curso_id = $request->get('curso');
         if($curso_id != null){
@@ -132,11 +138,17 @@ class MoodleController extends Controller
         }
 
         $moodle_id = $request->get('id');
-        if($moodle_id != null){
-            $moodle = Moodles::find($moodle_id);
+        if($moodle_id == null){
+            $moodle_id = session('moodle_id');
         }
+        $moodle = Moodles::find($moodle_id);
 
-        return \view('laravel-authentication-acl::moodle.user-access', compact('moodle', '      curso_info'));
+        $user = $auth->getLoggedUser();
+
+        $course = new UsersCourses();
+        $courses = $course->cursos($user->id, $moodle_id);
+
+        return \view('laravel-authentication-acl::moodle.user-access', compact('moodle', 'curso_info', 'courses'));
     }
 
     function getMoodleAccessCourses(Request $request)

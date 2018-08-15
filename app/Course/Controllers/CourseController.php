@@ -30,7 +30,7 @@ class CourseController extends Controller
     public function getList(Request $request)
     {
         $name = $request->get('name');
-        $courses = $this->model->getAll($name);
+        $courses = $this->model->getAll($name, session('moodle_id'));
 
         return \view('laravel-authentication-acl::admin.course.list', compact('courses', 'request' ));
     }
@@ -39,9 +39,11 @@ class CourseController extends Controller
     {
         $id = $request->get('id');
         $course = $this->model->find($id);
-
+        $moodle_id = null;
         if(!isset($course)){
             $course = new Courses();
+        }else{
+            $moodle_id = $course->moodle_id;
         }
 
         $moodles = Moodles::select('id', 'name')->get();
@@ -51,7 +53,7 @@ class CourseController extends Controller
             $moodles_values[$value->id] = $value->name;
         }
 
-        return \view('laravel-authentication-acl::admin.course.edit', compact('course', 'moodles_values'));
+        return \view('laravel-authentication-acl::admin.course.edit', compact('course', 'moodles_values', 'moodle_id'));
 
     }
 

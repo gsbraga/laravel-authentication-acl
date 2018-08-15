@@ -40,7 +40,7 @@ Admin area: edit course
                         <div class="input-group">
                             {!! Form::label('moodle_id','Ambiente: *') !!}
                             {{--<span class="input-group-addon form-button button-add-perm"><span class="glyphicon glyphicon-plus-sign add-input"></span></span>--}}
-                            {!! Form::select('moodle_id', $moodles_values, '', ["class"=>"form-control permission-select"]) !!}
+                            {!! Form::select('moodle_id', $moodles_values, $moodle_id, ["class"=>"form-control permission-select"]) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('name') !!}</span>
                         {!! Form::hidden('id') !!}

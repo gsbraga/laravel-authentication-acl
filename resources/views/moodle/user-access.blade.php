@@ -1,5 +1,5 @@
 @extends('laravel-authentication-acl::admin.layouts.base-2cols')
-@extends('laravel-authentication-acl::moodle.layouts.defaultmoodle')
+{{--@extends('laravel-authentication-acl::moodle.layouts.defaultmoodle')--}}
 
 @section('title')
     Disciplinas
@@ -58,6 +58,9 @@
                                     <div class="col-md-4 col-sm-6 col-xs-8 form-group has-feedback">
                                         <select onclick="troca_curso()" id="cursoid" name="cursoid" required="required" class="form-control col-md-7 col-xs-12">
                                             <option value="0">Selecione um Curso</option>
+                                            @foreach($courses as $course)
+                                                <option value="{{ $course->category_id }}">{{ $course->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -182,10 +185,10 @@
 
 <!-- jQuery -->
 {{--<script src="../vendors/jquery/dist/jquery.min.js"></script>--}}
-{!! HTML::script('packages/gentelella/vendors/jquery/dist/jquery.min.js') !!}
+{{--{!! HTML::script('packages/gentelella/vendors/jquery/dist/jquery.min.js') !!}--}}
 <!-- Bootstrap -->
 {{--<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>--}}
-{!! HTML::script('packages/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js') !!}
+{{--{!! HTML::script('packages/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js') !!}--}}
 <!-- FastClick -->
 {{--<script src="../vendors/fastclick/lib/fastclick.js"></script>--}}
 {!! HTML::script('packages/gentelella/vendors/fastclick/lib/fastclick.js') !!}
@@ -249,7 +252,7 @@
 
     }
 
-    categories();
+    // categories();
 
     var courses = function(){
 

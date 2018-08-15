@@ -45,9 +45,12 @@ Admin login
                     <input type="submit" value="Login" class="btn btn-info btn-block">
                     {!! Form::close() !!}
                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
-                            {!! link_to_route('user.reminder.process','Forgot password?') !!}
+                        <div class="col-xs-6 col-sm-6 col-md-6 margin-top-10 margin-top-10">
+                            {!! link_to_route('user.reminder.process','Recuperar senha?') !!}
                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 margin-top-10">
+                            <a href="{!! URL::route('home.moodles') !!}"><i class="fa fa-arrow-left"></i> Voltar</a>
+                        </div>
                    </div>
                 </div>
             </div>

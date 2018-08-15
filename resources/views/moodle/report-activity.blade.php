@@ -1,5 +1,5 @@
 @extends('laravel-authentication-acl::admin.layouts.base-2cols')
-@extends('laravel-authentication-acl::moodle.layouts.defaultmoodle')
+{{--@extends('laravel-authentication-acl::moodle.layouts.defaultmoodle')--}}
 
 @section('title')
     Relatório de Atividades
@@ -177,10 +177,10 @@
 
 <!-- jQuery -->
 {{--<script src="../vendors/jquery/dist/jquery.min.js"></script>--}}
-{!! HTML::script('packages/gentelella/vendors/jquery/dist/jquery.min.js') !!}
+{{--{!! HTML::script('packages/gentelella/vendors/jquery/dist/jquery.min.js') !!}--}}
 <!-- Bootstrap -->
 {{--<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>--}}
-{!! HTML::script('packages/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js') !!}
+{{--{!! HTML::script('packages/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js') !!}--}}
 <!-- FastClick -->
 {{--<script src="../vendors/fastclick/lib/fastclick.js"></script>--}}
 {!! HTML::script('packages/gentelella/vendors/fastclick/lib/fastclick.js') !!}

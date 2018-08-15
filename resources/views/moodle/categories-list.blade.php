@@ -46,8 +46,8 @@
                                 {{--<p style="display:  none; ">Ciência da Computação</p>--}}
                             </div>
                             <div class="card-footer-course">
-                                <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6"><a href="/admin/reports/list/?id={{$course->id}}&curso={{$course->category_id}}"><i class="fa fa-book "></i> Disciplinas</a></div>
-                                <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6"><a href="/admin/courses/userscourses?id={{$course->id}}"><i class="fa fa-cogs "></i> Gerenciar</a></div>
+                                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12"><a href="/admin/reports/list/?id={{$course->id}}&curso={{$course->category_id}}"><i class="fa fa-book "></i> Disciplinas</a></div>
+                                {{--<div class="col-md-6 col-sm-6 col-xs-6 col-lg-6"><a href="/admin/courses/userscourses?id={{$course->id}}"><i class="fa fa-cogs "></i> Gerenciar</a></div>--}}
                                 {{--<a href="/admin/courses/userscourses?id={{$course->id}}"><h4>Acessar</h4></a>--}}
                             </div>
                         </div>
@@ -73,9 +73,11 @@
     {!! HTML::script('packages/gentelella/build/js/config.js') !!}
 
     <script type="text/javascript">
-    var ambiente = parseInt(getUrlParameters("id", "", true));
-        ambiente--;
-    localStorage.setItem('ambiente', ambiente);
+        if(getUrlParameters("id", "", true) != false){
+            var ambiente = parseInt(getUrlParameters("id", "", true));
+            ambiente--;
+            localStorage.setItem('ambiente', ambiente);
+        }
 
     </script>
 @stop

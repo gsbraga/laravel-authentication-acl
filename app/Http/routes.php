@@ -8,7 +8,7 @@ use Illuminate\Session\TokenMismatchException;
   |
 */
 Route::get('/', [
-    "as"   => "dashboard.moodles",
+    "as"   => "home.moodles",
     "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getList'
 ]);
 
@@ -133,7 +133,7 @@ Route::group(['middleware' => ['web']], function ()
 
         //Dashboard dos Cursos
         Route::get('/dashboards/categories', [
-            "as"   => "dashboard.list",
+            "as"   => "reports.list",
             "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getCategoriesList'
         ]);
 

@@ -58,6 +58,9 @@
                                         <div class=" col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
                                             <select onchange="troca_category()" id="categoryid" name="categoryid" required="required" class="form-control col-md-7 col-xs-12">
                                                 <option value="0">Selecione um Curso</option>
+                                                @foreach($courses as $course)
+                                                    <option value="{{ $course->category_id }}">{{ $course->name }}</option>
+                                                @endforeach
                                             </select>
                                             <span id="link_courseid"></span>
                                         </div>
@@ -323,7 +326,7 @@
         }, "json");
     }
 
-    categories();
+    // categories();
 
     var courses = function(){
 

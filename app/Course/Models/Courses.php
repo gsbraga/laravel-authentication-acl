@@ -17,7 +17,7 @@ class Courses extends Model
     protected $fillable = ["name", "fullname", "moodle_id"];
 
 
-    public function getAll($name = '')
+    public function getAll($name = '', $moodle_id)
     {
         if($name != ''){
             $dados = DB::table('courses')
@@ -26,7 +26,7 @@ class Courses extends Model
             return $dados;
         }
 
-        return DB::table('courses')->get();
+        return DB::table('courses')->where('moodle_id', '=', $moodle_id)->get();
     }
 
     public function getUsersCourses($id)

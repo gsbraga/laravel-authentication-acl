@@ -61,14 +61,14 @@ return [
                 "name"        => "Cursos",
                 "route"       => "courses",
                 "link"        => '/admin/courses/list',
-                "permissions" => ["_superadmin", "_course-editor"]
+                "permissions" => ["_course-editor", "_editor"]
             ],
 
             [
                 "name"        => "Relatórios",
                 "route"       => "reports",
                 "link"        => '/dashboards/categories',
-                "permissions" => ["_superadmin", "_report-editor"]
+                "permissions" => ["_reports-editor"]
             ],
 
             [

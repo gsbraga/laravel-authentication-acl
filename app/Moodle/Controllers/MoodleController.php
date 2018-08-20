@@ -33,8 +33,9 @@ class MoodleController extends Controller
         $this->model = new Moodles();
     }
 
-    public function getList()
+    public function getList(AuthenticateInterface $auth)
     {
+        $user = $auth->getLoggedUser();
         $moodles = $this->model->get();
         foreach ($moodles as $key => $moodle){
 
@@ -46,7 +47,7 @@ class MoodleController extends Controller
 
 
 
-        return \view('laravel-authentication-acl::moodle.list', compact('moodles'));
+        return \view('laravel-authentication-acl::moodle.list', compact('moodles', 'user'));
     }
 
     public function getListDashboards()
@@ -90,7 +91,7 @@ class MoodleController extends Controller
             $curso_info = Courses::find($id);
 
         }else{
-            return redirect('/');
+            return redirect('/dashboards/moodles');
         }
 
         return \view('laravel-authentication-acl::admin.course.courses-list', compact('curso_info'));

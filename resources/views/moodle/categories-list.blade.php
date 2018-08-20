@@ -36,9 +36,9 @@
                         <div class="card-body-course">
                             <div class="card-title-course"><div class="course-list">
                                     {{--<img src="/packages/jacopo/laravel-authentication-acl/images/cursos/{{ $course->image  }}" alt="Curso online jQuery: Avance na biblioteca mais popular do mercado parte 2" aria-hidden="true" class="img-course">--}}
-                                    <h1 class="img_curso img_curso_{{ $course->id % 4 }}">{{ substr($course->name, 0, 2) }}</h1>
+                                    <h1 class="img_curso img_curso_{{ $course->id % 4 }}">{{ mb_substr($course->name, 0, 2, 'UTF-8') }}</h1>
                                     <div class="course-name">
-                                        <h4>{{ $course->name }}:</h4> {{ $course->fullname}}
+                                        <h4>{{ $course->name }}</h4> {{ $course->fullname}}
                                     </div>
                                 </div>
                             </div>

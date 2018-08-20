@@ -11,7 +11,7 @@ return [
   |
   */
 
-  "app_name" => "Acompanhamento NEAD",
+  "app_name" => "Monitoramento NEAD",
 
   /*
   |--------------------------------------------------------------------------

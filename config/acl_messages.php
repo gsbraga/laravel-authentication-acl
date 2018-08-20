@@ -91,6 +91,6 @@ return [
         |
         */
         "links" => [
-                "change_password" => "Click here to change your password."
+                "change_password" => "Clique aqui para alterar sua senha."
         ]
 ];

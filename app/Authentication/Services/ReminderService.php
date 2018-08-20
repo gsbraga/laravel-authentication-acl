@@ -82,7 +82,7 @@ class ReminderService {
 
         if(! $success)
         {
-            $this->errors->add('mail', 'There was an error sending the email');
+            $this->errors->add('mail', 'Ocorreu um erro ao enviar email.');
             throw new MailException;
         }
     }

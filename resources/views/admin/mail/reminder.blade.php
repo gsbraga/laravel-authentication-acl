@@ -6,10 +6,10 @@
         {!!  HTML::style('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css') !!}
 	</head>
 	<body>
-		<h2>Password recovery for {!! Config::get('acl_base.app_name') !!}</h2>
+		<h2>Recuperação de senha para {!! Config::get('acl_base.app_name') !!}</h2>
 		<div>
-            We received a request to change your password, if you authorize it {!! $body !!}<br/>
-            Otherwise ignore this email.
+            Nós recebemos uma requisição para alterar sua senha, se você autorizá-lo {!! $body !!}<br/>
+			Caso contrário, ignore este e-mail.
 		</div>
 	</body>
 </html>

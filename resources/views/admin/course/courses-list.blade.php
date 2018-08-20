@@ -183,7 +183,7 @@
                 }
             });
         }else{
-            location.href = '/';
+            location.href = '/dashboards/moodles';
         }
     }
 

@@ -35,7 +35,7 @@
 
                 @include('laravel-authentication-acl::admin.layouts.partials.avatar', ['size' => 30])
                 <span id="nav-email">{!! isset($user) ? $user->email : 'User' !!}</span> <br/>
-                <span id="nav-email">{!! isset($user) ? 'Último acesso: ' . str_replace('-', '/', $user->last_login) : 'Primeiro acesso' !!}</span> <br/>
+                <span id="nav-email">{!! isset($user) ? 'Último acesso: ' . date( 'd/m/Y H:i:s' , strtotime($user->last_login)) : 'Primeiro acesso' !!}</span> <br/>
 
                 <a href="{!! URL::route('user.logout') !!}"><i class="fa fa-sign-out"></i> Sair</a>
                 {{--<a onclick="logout()" type="button" class="btn btn-secondary"><i class=""></i> Sair do sistema de monitoramento</a>--}}

@@ -162,6 +162,9 @@
                             <div class="col-12">
                                 <span style="color: red;">Reprovados: <b id="reprovados">0</b></span>
                             </div>
+                            <div class="col-12">
+                                <span style="color: red;">Sem nota: <b id="semnota">0</b></span>
+                            </div>
 
                         </div>
                     </div>
@@ -343,12 +346,13 @@
                 var grupo = '-';
                 var aprovados = 0;
                 var reprovados = 0;
+                var semnota = 0;
 
 
                 $.each(data, function(index, item){
 
                     if(item.nota == null){
-                        nota = '-';
+                        nota = 'Sem nota';
                     }else{
                         aux = parseFloat(item.nota);
                         nota = parseFloat(aux.toFixed(2));
@@ -359,9 +363,12 @@
                     if(nota >=  7.0){
                         status = 'Aprovado';
                         aprovados++;
-                    }else{
+                    }else if(nota < 7.0 && nota >= 0 ){
                         status = 'Reprovado';
                         reprovados++;
+                    }else{
+                        status = 'Reprovado';
+                        semnota++;
                     }
                     if(item.grupo == null){ grupo = '-'; }else{grupo = item.grupo;}
 
@@ -377,6 +384,7 @@
 
                 $('#aprovados').html(aprovados);
                 $('#reprovados').html(reprovados);
+                $('#semnota').html(semnota);
 
                 table = $('#table_course').DataTable({
                     paging: true,

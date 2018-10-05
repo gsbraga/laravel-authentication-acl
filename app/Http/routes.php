@@ -305,6 +305,13 @@ Route::group(['middleware' => ['web']], function ()
             "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getMoodleReportCourse'
         ]);
 
+        Route::get('admin/reports/reportcategory', [
+            "as"   => "reports.reportcategory",
+            "uses" => 'LaravelAcl\Moodle\Controllers\MoodleController@getUsersCategory'
+        ]);
+
+        
+
 
 
         /**

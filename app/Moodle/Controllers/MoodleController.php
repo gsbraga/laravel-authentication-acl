@@ -222,4 +222,20 @@ class MoodleController extends Controller
         return \view('laravel-authentication-acl::moodle.report-course', compact('curso_info'));
     }
 
+    function getUsersCategory(Request $request, AuthenticateInterface $auth)
+    {
+        $user = $auth->getLoggedUser();
+        
+        $moodle_id = session('moodle_id');
+        
+
+        $moodle = $this->model->find($moodle_id);
+
+        $courses = [];
+        $course = new UsersCourses();
+        $courses = $course->cursos($user->id, $moodle_id);
+
+        return \view('laravel-authentication-acl::moodle.report-category-users', compact('courses', 'moodle'));
+    }
+
 }

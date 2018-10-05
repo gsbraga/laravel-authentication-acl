@@ -11,6 +11,7 @@
     <li><a href="/admin/reports/reportforum/?curso={{ $curso_info->category_id }}"><i class="fa fa-comments"></i>Forum</a></li>
     <li><a href="/admin/reports/reportquiz/?curso={{ $curso_info->category_id }}"><i class="fa fa-comments-o"></i>Quiz</a></li>
     <li><a href="/admin/reports/reportcourse/?curso={{ $curso_info->category_id }}"><i class="fa fa-comments-o"></i>Disciplina</a></li>
+    <li><a href="/admin/reports/reportcategory/?curso={{ $curso_info->category_id }}"><i class="fa fa-comments-o"></i>Curso</a></li>
 
     @endif
 
